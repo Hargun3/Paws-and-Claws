@@ -2,9 +2,9 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-// Set canvas size to 1280x960 (fixed size)
+// Set canvas size to 1280x800 (fixed size)
 canvas.width = 1280;
-canvas.height = 960;
+canvas.height = 800;
 
 // Load the background image
 const background = new Image();
@@ -26,13 +26,39 @@ const movement = {
 
 // Breakable objects and status tracking
 const objects = [
-  document.getElementById("object1"),
-  document.getElementById("object2"),
-  document.getElementById("object3"),
-  document.getElementById("object4"),
-  document.getElementById("object5"),
+  { element: document.getElementById("object1"), brokenSrc: 'brokenvase.png' },
+  { element: document.getElementById("object2"), brokenSrc: 'brokenplant.png' },
+  { element: document.getElementById("object3"), brokenSrc: 'brokenbook.png' },
+  { element: document.getElementById("object4"), brokenSrc: 'brokentable.png' },
+  { element: document.getElementById("object5"), brokenSrc: 'brokenlamp.png' }
 ];
-const objectStates = [false, false, false , false , false]; // Tracks whether objects are broken
+const objectStates = [false, false, false, false, false]; // Tracks whether objects are broken
+
+// Update the cat's position and image based on movement direction
+function updateCatPosition() {
+  // Set the cat's direction based on movement
+  if (movement.up && movement.left) {
+    cat.style.backgroundImage = "url('meow-up-left.png')"; // Cat facing up-left
+  } else if (movement.up && movement.right) {
+    cat.style.backgroundImage = "url('meow-up-right.png')"; // Cat facing up-right
+  } else if (movement.down && movement.left) {
+    cat.style.backgroundImage = "url('meow-down-left.png')"; // Cat facing down-left
+  } else if (movement.down && movement.right) {
+    cat.style.backgroundImage = "url('meow-down-right.png')"; // Cat facing down-right
+  } else if (movement.up) {
+    cat.style.backgroundImage = "url('meow-up.png')"; // Cat facing up
+  } else if (movement.down) {
+    cat.style.backgroundImage = "url('meow-down.png')"; // Cat facing down
+  } else if (movement.left) {
+    cat.style.backgroundImage = "url('meow-left.png')"; // Cat facing left
+  } else if (movement.right) {
+    cat.style.backgroundImage = "url('meow-right.png')"; // Cat facing right
+  }
+
+  // Update the cat's position
+  cat.style.left = `${catX}px`;
+  cat.style.top = `${catY}px`;
+}
 
 // Draw the initial scene including the background image
 function drawScene() {
@@ -46,19 +72,13 @@ function drawScene() {
   updateCatPosition();
 }
 
-// Update the cat's position on the screen
-function updateCatPosition() {
-  cat.style.left = `${catX}px`;
-  cat.style.top = `${catY}px`;
-}
-
 // Check for collisions with objects
 function detectCollision() {
   const catRect = cat.getBoundingClientRect();
 
   objects.forEach((object, index) => {
     if (!objectStates[index]) {
-      const objectRect = object.getBoundingClientRect();
+      const objectRect = object.element.getBoundingClientRect();
 
       if (
         catRect.left < objectRect.right &&
@@ -74,8 +94,18 @@ function detectCollision() {
 
 // Handle collision events
 function handleCollision(object, index) {
-  object.style.opacity = '0.5'; // Change opacity to show it's broken
   objectStates[index] = true; // Mark the object as broken
+
+  // Add the smokey effect when the cat collides with an object
+  object.element.classList.add('smokey'); // Add the smokey class for animation
+
+  setTimeout(() => {
+    // Change the image source after the animation
+    object.element.src = object.brokenSrc; // Replace with the broken version of the object
+    object.element.style.opacity = '1'; // Ensure full opacity after image change
+    object.element.classList.remove('smokey'); // Remove the smokey class to reset
+  }, 1000); // Wait for the animation to complete
+
   console.log(`Collision detected with object ${index + 1}`);
 }
 
