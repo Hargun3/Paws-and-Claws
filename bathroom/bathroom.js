@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'kitchen.png'; // Replace with the correct path to your background image
+background.src = 'bathroom.png'; // Replace with the correct path to your background image
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
@@ -24,16 +24,15 @@ const movement = {
   right: false
 };
 
-// Breakable objects and status tracking, including the door with isDoor property
+// Breakable objects and status tracking
 const objects = [
   { element: document.getElementById("object1"), brokenSrc: 'brokenvase.png' },
   { element: document.getElementById("object2"), brokenSrc: 'brokenplant.png' },
   { element: document.getElementById("object3"), brokenSrc: 'brokenbook.png' },
   { element: document.getElementById("object4"), brokenSrc: 'brokentable.png' },
-  { element: document.getElementById("object5"), brokenSrc: 'brokenlamp.png' },
-  { element: document.getElementById("door"), isDoor: true } // Door with isDoor flag
+  { element: document.getElementById("object5"), brokenSrc: 'brokenlamp.png' }
 ];
-const objectStates = [false, false, false, false, false, false]; // Tracks whether objects are broken
+const objectStates = [false, false, false, false, false]; // Tracks whether objects are broken
 
 // Update the cat's position and image based on movement direction
 function updateCatPosition() {
@@ -78,18 +77,15 @@ function detectCollision() {
   const catRect = cat.getBoundingClientRect();
 
   objects.forEach((object, index) => {
-    const objectRect = object.element.getBoundingClientRect();
+    if (!objectStates[index]) {
+      const objectRect = object.element.getBoundingClientRect();
 
-    if (
-      catRect.left < objectRect.right &&
-      catRect.right > objectRect.left &&
-      catRect.top < objectRect.bottom &&
-      catRect.bottom > objectRect.top
-    ) {
-      if (object.isDoor) {
-        // Navigate to bathroom.html if the door is hit
-        window.location.href = '../bathroom/bathroom.html';
-      } else if (!objectStates[index]) {
+      if (
+        catRect.left < objectRect.right &&
+        catRect.right > objectRect.left &&
+        catRect.top < objectRect.bottom &&
+        catRect.bottom > objectRect.top
+      ) {
         handleCollision(object, index);
       }
     }
