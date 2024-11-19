@@ -39,22 +39,25 @@ const objectStates = [false, false, false, false, false, false]; // Tracks wheth
 function updateCatPosition() {
   // Set the cat's direction based on movement
   if (movement.up && movement.left) {
-    cat.style.backgroundImage = "url('meow-up-left.png')"; // Cat facing up-left
+    cat.style.backgroundImage = "url('../universal/meow-up-left.png')"; // Cat facing up-left
   } else if (movement.up && movement.right) {
-    cat.style.backgroundImage = "url('meow-up-right.png')"; // Cat facing up-right
+    cat.style.backgroundImage = "url('../universal/meow-up-right.png')"; // Cat facing up-right
   } else if (movement.down && movement.left) {
-    cat.style.backgroundImage = "url('meow-down-left.png')"; // Cat facing down-left
+    cat.style.backgroundImage = "url('../universal/meow-down-left.png')"; // Cat facing down-left
   } else if (movement.down && movement.right) {
-    cat.style.backgroundImage = "url('meow-down-right.png')"; // Cat facing down-right
+    cat.style.backgroundImage = "url('../universal/meow-down-right.png')"; // Cat facing down-right
   } else if (movement.up) {
-    cat.style.backgroundImage = "url('meow-up.png')"; // Cat facing up
+    cat.style.backgroundImage = "url('../universal/meow-up.png')"; // Cat facing up
   } else if (movement.down) {
-    cat.style.backgroundImage = "url('meow-down.png')"; // Cat facing down
+    cat.style.backgroundImage = "url('../universal/meow-down.png')"; // Cat facing down
   } else if (movement.left) {
-    cat.style.backgroundImage = "url('meow-left.png')"; // Cat facing left
+    cat.style.backgroundImage = "url('../universal/meow-left.png')"; // Cat facing left
   } else if (movement.right) {
-    cat.style.backgroundImage = "url('meow-right.png')"; // Cat facing right
+    cat.style.backgroundImage = "url('../universal/meow-right.png')"; // Cat facing right
   }
+  else
+  cat.style.backgroundImage = "url('../universal/meow-resting.png')"; // Cat resting
+
 
   // Update the cat's position
   cat.style.left = `${catX}px`;

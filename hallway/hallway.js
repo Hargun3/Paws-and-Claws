@@ -8,12 +8,12 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'kitchen.png'; // Replace with the correct path to your background image
+background.src = 'hallway.png'; // Replace with the correct path to your background image
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
-let catX = 200; // Initial X position
-let catY = 200; // Initial Y position
+let catX = 600; // Initial X position
+let catY = 500; // Initial Y position
 const catSpeed = 3; // Cat speed for movement
 
 // Movement tracking
