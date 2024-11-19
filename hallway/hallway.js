@@ -89,9 +89,9 @@ function detectCollision() {
       catRect.top < objectRect.bottom &&
       catRect.bottom > objectRect.top
     ) {
-      if (object.isDoor) {
+      if (object.isGarage-Door) {
         // Navigate to bathroom.html if the door is hit
-        window.location.href = '../bathroom/bathroom.html';
+        window.location.href = '../garage/garage.html';
       } else if (!objectStates[index]) {
         handleCollision(object, index);
       }
