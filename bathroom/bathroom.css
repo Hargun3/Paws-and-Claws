@@ -1,114 +1,108 @@
 /* General page styling */
 body {
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-}
-
-#game-container {
-  position: relative;
-  width: 1280px;
-  height: 800px;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* Cat element styling */
-#cat {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-image: url('meow.png'); /* Path to the cat image */
-  background-size: contain;
-  background-repeat: no-repeat;
-  top: 200px;
-  left: 200px;
-}
-
-/* Canvas styling */
-#gameCanvas {
-  width: 1280px;
-  height: 800px;
-  background-color: #7c6c61;
-  border-radius: 10px;
-}
-
-/* Breakable object styling */
-.breakableObject {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  transition: opacity 0.5s, transform 0.5s;
-}
-/* Smokey effect */
-@keyframes smokeEffect {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0px);
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
   }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.2);
-    filter: blur(5px);
+  
+  #game-container {
+    position: relative;
+    width: 1280px;
+    height: 800px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
-  100% {
-    opacity: 0;
-    transform: scale(1.5);
-    filter: blur(10px);
+  
+  /* Cat element styling */
+  #cat {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('meow.png'); /* Path to the cat image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 200px;
+    left: 200px;
   }
-}
-
-.smokey {
-  animation: smokeEffect 1s forwards;
-}
-
-/* Initial positions for objects */
-#object1 {
-  top: 49px;
-  left: 580px;
-  height: auto;
-  width: auto;
-}
-
-#object2 {
-  top: 15px;
-  left: 688px;
-  height: auto;
-  width: auto;
-}
-
-#object3 {
-  top: 556px;
-  left: 301px;
-  height: auto;
-  width: auto;
-}
-
-#object4 {
-  top: 165px;
-  left: 1002px;
-  height: auto;
-  width: auto;
-}
-
-#object5 {
-  top: 4px;
-  left: 897px;
-  height: auto;
-  width: auto;
-}
-
-#door {
-  top: 741px;
-  left: 975px;
-  height: auto;
-  width: auto;
-}
+  
+  /* Canvas styling */
+  #gameCanvas {
+    width: 1280px;
+    height: 800px;
+    background-color: #7c6c61;
+    border-radius: 10px;
+  }
+  
+  /* Breakable object styling */
+  .breakableObject {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  /* Smokey effect */
+  @keyframes smokeEffect {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0px);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+      filter: blur(5px);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+      filter: blur(10px);
+    }
+  }
+  
+  .smokey {
+    animation: smokeEffect 1s forwards;
+  }
+  
+  /* Initial positions for objects */
+  #object1 {
+    top: 49px;
+    left: 580px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object2 {
+    top: 15px;
+    left: 688px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object3 {
+    top: 556px;
+    left: 301px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object4 {
+    top: 165px;
+    left: 1002px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object5 {
+    top: 4px;
+    left: 897px;
+    height: auto;
+    width: auto;
+  }
+  
