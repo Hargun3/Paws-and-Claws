@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'bathroom.png'; // Replace with the correct path to your background image
+background.src = 'livingroom.png'; // Replace with the correct path to your background image
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
@@ -91,7 +91,7 @@ function detectCollision() {
     ) {
       if (object.isDoor) {
         // Navigate to bathroom.html if the door is hit
-        window.location.href = '../bathroom/bathroom.html';
+        window.location.href = '../hallway/hallway.html';
       } else if (!objectStates[index]) {
         handleCollision(object, index);
       }
