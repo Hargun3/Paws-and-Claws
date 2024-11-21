@@ -48,11 +48,11 @@ img[id^="door"] {
 }
 
 /* Positions for doors */
-#door1 { top: 160px; left: 450px; width: 25px; height: 25px;}
-#door2 { top: 490px; left: 450px; }
+#door1 { top: 160px; left: 447px; width: 10px; height: 55px;}
+#door2 { top: 475px; left: 448px; width: 10px; height: 55px;}
 #door3 { top: 700px; left: 822px; width: 10px; height: 55px; }
-#door4 { top: 520px; left: 1080px; }
-#door5 { top: 350px; left: 870px; }
-#door6 { top: 230px; left: 820px; }
-#door7 { top: 60px; left: 740px; }
-#door8 { top: 60px; left: 550px; }
+#door4 { top: 533px; left: 1065px; width: 55px; height: 10px; }
+#door5 { top: 366px; left: 856px; width: 55px; height: 10px; }
+#door6 { top: 230px; left: 822px; width: 10px; height: 55px; }
+#door7 { top: 60px; left: 740px; width: 55px; height: 10px;}
+#door8 { top: 60px; left: 550px; width: 55px; height: 10px;}

@@ -33,7 +33,7 @@ const objects = [
   { element: document.getElementById("door5"), isDoor: true, navigateTo: '../kitchen/kitchen.html' },
   { element: document.getElementById("door6"), isDoor: true, navigateTo: '../kitchen/kitchen.html' },
   { element: document.getElementById("door7"), isDoor: true, navigateTo: '../backyard/backyard.html' },
-  { element: document.getElementById("door8"), isDoor: true, navigateTo: '../bakyard/backyard.html' }
+  { element: document.getElementById("door8"), isDoor: true, navigateTo: '../backyard/backyard.html' }
 ];
 
 // Update the cat's position and image based on movement direction

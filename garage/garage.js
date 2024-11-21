@@ -14,7 +14,7 @@ background.src = 'garage.png'; // Replace with the correct path to your backgrou
 const cat = document.getElementById("cat");
 let catX = 200; // Initial X position
 let catY = 200; // Initial Y position
-const catSpeed = 3; // Cat speed for movement
+const catSpeed = 6; // Cat speed for movement
 
 // Movement tracking
 const movement = {
@@ -26,14 +26,17 @@ const movement = {
 
 // Breakable objects and status tracking, including the door with isDoor property
 const objects = [
-  { element: document.getElementById("object1"), brokenSrc: 'brokenvase.png' },
-  { element: document.getElementById("object2"), brokenSrc: 'brokenplant.png' },
-  { element: document.getElementById("object3"), brokenSrc: 'brokenbook.png' },
-  { element: document.getElementById("object4"), brokenSrc: 'brokentable.png' },
-  { element: document.getElementById("object5"), brokenSrc: 'brokenlamp.png' },
-  { element: document.getElementById("door"), isDoor: true } // Door with isDoor flag
+  { element: document.getElementById("object1"), brokenSrc: '../universal/broken-bigp.png' },
+  { element: document.getElementById("object2"), brokenSrc: '../universal/broken-bigp.png' },
+  { element: document.getElementById("object3"), brokenSrc: '../universal/broken-ipad.png' },
+  { element: document.getElementById("object4"), brokenSrc: '../universal/broken-smolp.png' },
+  { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png' },
+  { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smoly.png' },
+  { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smolb.png' },
+  { element: document.getElementById("door"), isDoor: true }, // Door with isDoor flag
+  { element: document.getElementById("door2"), isDoor2: true}
 ];
-const objectStates = [false, false, false, false, false, false]; // Tracks whether objects are broken
+const objectStates = [false, false, false, false, false, false, false, false]; // Tracks whether objects are broken
 
 // Update the cat's position and image based on movement direction
 function updateCatPosition() {
@@ -91,8 +94,12 @@ function detectCollision() {
     ) {
       if (object.isDoor) {
         // Navigate to bathroom.html if the door is hit
-        window.location.href = '../bathroom/bathroom.html';
-      } else if (!objectStates[index]) {
+        window.location.href = '../hallway/hallway.html';
+      }
+      else if (object.isDoor2) {
+        window.location.href = '../hallway/hallway.html';
+      }
+       else if (!objectStates[index]) {
         handleCollision(object, index);
       }
     }

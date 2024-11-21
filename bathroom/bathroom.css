@@ -71,44 +71,64 @@ body {
 }
 
 /* Initial positions for objects */
-#object1 {
-  top: 49px;
-  left: 580px;
+#object1 { 
+  top: 41px;
+  left: 303px;
   height: auto;
   width: auto;
 }
 
 #object2 {
-  top: 15px;
-  left: 688px;
+  top: 639px;
+  left: 231px;
   height: auto;
   width: auto;
 }
 
 #object3 {
-  top: 556px;
-  left: 301px;
+  top: 278px;
+  left: 1126px;
   height: auto;
   width: auto;
 }
 
 #object4 {
-  top: 165px;
-  left: 1002px;
+  top: 45px;
+  left: 1062px;
   height: auto;
   width: auto;
 }
 
 #object5 {
-  top: 4px;
-  left: 897px;
+  top: 110px;
+  left: 721px;
   height: auto;
   width: auto;
 }
 
 #door {
-  top: 741px;
+  top: 610px;
+  left: 1250px;
+  height: auto;
+  width: auto;
+}
+#door2 {
+  top: 0px;
   left: 975px;
+  height: auto;
+  width: auto;
+}
+
+#object6 {
+  top: 203px;
+  left: 47px;
+  height: auto;
+  width: auto;
+}
+
+#object7 {
+  top: 447px;
+  left: 503px;
   height: auto;
   width: auto;
 }
