@@ -14,7 +14,7 @@ background.src = 'hallway.png'; // Replace with the correct path to your backgro
 const cat = document.getElementById("cat");
 let catX = 600; // Initial X position
 let catY = 500; // Initial Y position
-const catSpeed = 3; // Cat speed for movement
+const catSpeed = 5; // Cat speed for movement
 
 // Movement tracking
 const movement = {
@@ -34,6 +34,22 @@ const objects = [
   { element: document.getElementById("door6"), isDoor: true, navigateTo: '../kitchen/kitchen.html' },
   { element: document.getElementById("door7"), isDoor: true, navigateTo: '../backyard/backyard.html' },
   { element: document.getElementById("door8"), isDoor: true, navigateTo: '../backyard/backyard.html' }
+];
+
+// Define the hallway boundaries (brown area)
+const hallwayBounds = [
+  { // Horizontal part of the hallway
+    xMin: 449,
+    xMax: 780,
+    yMin: 50,
+    yMax: 700
+  },
+  { // Vertical part of the hallway
+    xMin: 449,
+    xMax: 1150,
+    yMin: 375,
+    yMax: 480
+  }
 ];
 
 // Update the cat's position and image based on movement direction
@@ -91,12 +107,29 @@ function detectCollision() {
   });
 }
 
-// Ensure the cat stays within canvas boundaries
-function keepCatInBounds() {
-  const maxX = canvas.width - cat.offsetWidth;
-  const maxY = canvas.height - cat.offsetHeight;
-  catX = Math.max(0, Math.min(maxX, catX));
-  catY = Math.max(0, Math.min(maxY, catY));
+// Ensure the cat stays within the hallway boundaries
+function constrainCatToHallway() {
+  let isInsideAnyHallway = false;
+
+  // Check if the cat is inside any of the defined hallway bounds
+  hallwayBounds.forEach((bounds) => {
+    if (
+      catX >= bounds.xMin &&
+      catX <= bounds.xMax &&
+      catY >= bounds.yMin &&
+      catY <= bounds.yMax
+    ) {
+      isInsideAnyHallway = true;
+    }
+  });
+
+  // Block movement if outside all allowed areas
+  if (!isInsideAnyHallway) {
+    if (movement.up) catY += catSpeed;   // Undo upward movement
+    if (movement.down) catY -= catSpeed; // Undo downward movement
+    if (movement.left) catX += catSpeed; // Undo leftward movement
+    if (movement.right) catX -= catSpeed; // Undo rightward movement
+  }
 }
 
 // Animation loop
@@ -106,10 +139,11 @@ function animate() {
   if (movement.left) catX -= catSpeed;
   if (movement.right) catX += catSpeed;
 
-  keepCatInBounds();
+  constrainCatToHallway(); // Constrain cat within hallway
   drawScene();
   detectCollision();
   requestAnimationFrame(animate);
+  constrainCatToHallway();
 }
 
 // Keyboard event listeners for movement
