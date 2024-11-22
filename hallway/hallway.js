@@ -8,7 +8,10 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'hallway.png'; // Replace with the correct path to your background image
+background.src = 'hallway.png'; 
+
+const pawPrint = new Image();
+pawPrint.src = '../universal/pawprint.png';
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
@@ -52,6 +55,12 @@ const hallwayBounds = [
   }
 ];
 
+let pawPrints = [];
+let pawPrintCooldown = 0;
+const pawPrintCooldownLimit = 7;
+
+
+
 // Update the cat's position and image based on movement direction
 function updateCatPosition() {
   if (movement.up && movement.left) {
@@ -84,7 +93,41 @@ function drawScene() {
   if (background.complete) {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   }
+  drawPawPrints();
   updateCatPosition();
+}
+
+function drawPawPrints() {
+  for (let i = 0; i < pawPrints.length; i++) {
+    const paw = pawPrints[i];
+    ctx.globalAlpha = paw.opacity; // Set transparency
+    ctx.drawImage(pawPrint, paw.x, paw.y, 15, 15); // Adjust size if needed
+    ctx.globalAlpha = 1; // Reset transparency for other drawings
+
+    // Reduce opacity and lifetime
+    paw.opacity -= 0.01; // Adjust fade speed
+    paw.lifetime--;
+
+    // Remove the paw print if it has fully faded
+    if (paw.lifetime <= 0) {
+      pawPrints.splice(i, 1);
+      i--; // Adjust index to account for removed item
+    }
+  }
+}
+
+function leavePawPrint() {
+  if (pawPrintCooldown <= 0) {
+    pawPrints.push({
+      x: catX + 20, // Adjust to center under the cat
+      y: catY + 80, // Adjust based on the cat's size
+      opacity: 1,   // Start fully opaque
+      lifetime: 100 // Frames before fading completely
+    });
+
+    // Reset the cooldown
+    pawPrintCooldown = pawPrintCooldownLimit;
+  }
 }
 
 // Check for collisions with doors only
@@ -134,10 +177,16 @@ function constrainCatToHallway() {
 
 // Animation loop
 function animate() {
+  if (pawPrintCooldown > 0) {
+    pawPrintCooldown--;
+  }
   if (movement.up) catY -= catSpeed;
   if (movement.down) catY += catSpeed;
   if (movement.left) catX -= catSpeed;
   if (movement.right) catX += catSpeed;
+  if (movement.up || movement.down || movement.left || movement.right) {
+    leavePawPrint();
+  }
 
   constrainCatToHallway(); // Constrain cat within hallway
   drawScene();

@@ -10,6 +10,10 @@ canvas.height = 800;
 const background = new Image();
 background.src = 'livingroom.png'; // Replace with the correct path to your background image
 
+// Load the paw print image
+const pawPrint = new Image();
+pawPrint.src = '../universal/pawprint.png';
+
 // Cat element and movement setup
 const cat = document.getElementById("cat");
 let catX = 200; // Initial X position
@@ -33,13 +37,17 @@ const objects = [
   { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smoly.png' },
   { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smolb.png' },
   { element: document.getElementById("door"), isDoor: true }, // Door with isDoor flag
-  { element: document.getElementById("door2"), isDoor2: true}
+  { element: document.getElementById("door2"), isDoor2: true }
 ];
-const objectStates = [false, false, false, false, false,false]; // Tracks whether objects are broken
+const objectStates = [false, false, false, false, false, false]; // Tracks whether objects are broken
+
+// Paw print functionality
+let pawPrints = [];
+let pawPrintCooldown = 0;
+const pawPrintCooldownLimit = 7;
 
 // Update the cat's position and image based on movement direction
 function updateCatPosition() {
-  // Set the cat's direction based on movement
   if (movement.up && movement.left) {
     cat.style.backgroundImage = "url('../universal/meow-up-left.png')"; // Cat facing up-left
   } else if (movement.up && movement.right) {
@@ -56,14 +64,47 @@ function updateCatPosition() {
     cat.style.backgroundImage = "url('../universal/meow-left.png')"; // Cat facing left
   } else if (movement.right) {
     cat.style.backgroundImage = "url('../universal/meow-right.png')"; // Cat facing right
+  } else {
+    cat.style.backgroundImage = "url('../universal/meow-resting.png')"; // Cat resting
   }
-  else
-  cat.style.backgroundImage = "url('../universal/meow-resting.png')"; // Cat resting
-
 
   // Update the cat's position
   cat.style.left = `${catX}px`;
   cat.style.top = `${catY}px`;
+}
+
+// Draw paw prints
+function drawPawPrints() {
+  for (let i = 0; i < pawPrints.length; i++) {
+    const paw = pawPrints[i];
+    ctx.globalAlpha = paw.opacity; // Set transparency
+    ctx.drawImage(pawPrint, paw.x, paw.y, 15, 15); // Adjust size if needed
+    ctx.globalAlpha = 1; // Reset transparency for other drawings
+
+    // Reduce opacity and lifetime
+    paw.opacity -= 0.01; // Adjust fade speed
+    paw.lifetime--;
+
+    // Remove the paw print if it has fully faded
+    if (paw.lifetime <= 0) {
+      pawPrints.splice(i, 1);
+      i--; // Adjust index to account for removed item
+    }
+  }
+}
+
+function leavePawPrint() {
+  if (pawPrintCooldown <= 0) {
+    pawPrints.push({
+      x: catX + 20, // Adjust to center under the cat
+      y: catY + 80, // Adjust based on the cat's size
+      opacity: 1, // Start fully opaque
+      lifetime: 100 // Frames before fading completely
+    });
+
+    // Reset the cooldown
+    pawPrintCooldown = pawPrintCooldownLimit;
+  }
 }
 
 // Draw the initial scene including the background image
@@ -75,7 +116,8 @@ function drawScene() {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   }
 
-  updateCatPosition();
+  drawPawPrints(); // Draw paw prints
+  updateCatPosition(); // Update cat position and draw
 }
 
 // Check for collisions with objects
@@ -92,15 +134,10 @@ function detectCollision() {
       catRect.bottom > objectRect.top
     ) {
       if (object.isDoor) {
-        // Navigate to bathroom.html if the door is hit
         window.location.href = '../hallway/hallway.html';
-        
-      }
-      else if (object.isDoor2) {
-        window.location.href = '../bathroom/bathroom.html'
-      }
-      
-      else if (!objectStates[index]) {
+      } else if (object.isDoor2) {
+        window.location.href = '../bathroom/bathroom.html';
+      } else if (!objectStates[index]) {
         handleCollision(object, index);
       }
     }
@@ -110,16 +147,13 @@ function detectCollision() {
 // Handle collision events
 function handleCollision(object, index) {
   objectStates[index] = true; // Mark the object as broken
-
-  // Add the smokey effect when the cat collides with an object
-  object.element.classList.add('smokey'); // Add the smokey class for animation
+  object.element.classList.add('smokey'); // Add smokey effect
 
   setTimeout(() => {
-    // Change the image source after the animation
-    object.element.src = object.brokenSrc; // Replace with the broken version of the object
+    object.element.src = object.brokenSrc;
     object.element.style.opacity = '1'; // Ensure full opacity after image change
-    object.element.classList.remove('smokey'); // Remove the smokey class to reset
-  }, 1000); // Wait for the animation to complete
+    object.element.classList.remove('smokey'); // Reset animation class
+  }, 1000);
 
   console.log(`Collision detected with object ${index + 1}`);
 }
@@ -135,10 +169,16 @@ function keepCatInBounds() {
 
 // Animation loop
 function animate() {
+  if (pawPrintCooldown > 0) {
+    pawPrintCooldown--;
+  }
   if (movement.up) catY -= catSpeed;
   if (movement.down) catY += catSpeed;
   if (movement.left) catX -= catSpeed;
   if (movement.right) catX += catSpeed;
+  if (movement.up || movement.down || movement.left || movement.right) {
+    leavePawPrint();
+  }
 
   keepCatInBounds();
   drawScene();
