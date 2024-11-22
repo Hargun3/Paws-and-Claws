@@ -1,3 +1,4 @@
+
 // Canvas and context setup
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -14,7 +15,18 @@ background.src = 'hallway.png'; // Replace with the correct path to your backgro
 const cat = document.getElementById("cat");
 let catX = 600; // Initial X position
 let catY = 500; // Initial Y position
+let catR = 17;
+let pos_X_offset = 28;
+let pos_Y_offset = 30;
 const catSpeed = 3; // Cat speed for movement
+
+const grandma = document.getElementById("grandma");
+let grandmaX = 500;
+let grandmaY = 600;
+let grandmaR = 17;
+let grandma_pos_X_offset = 23;
+let grandma_pos_Y_offset = 23;
+let grandmaSpeed = 1;
 
 // Movement tracking
 const movement = {
@@ -23,6 +35,19 @@ const movement = {
   left: false,
   right: false
 };
+
+// Wall objects list
+walls_opacity = 0
+const obstacles = [
+  {x: 448, y: 60, width: 10, height: 712, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 448, y: 60, width:384, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 822, y: 60, width:10, height: 317, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 822, y: 367, width:367, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 1189, y: 367, width:10, height: 170, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 822, y: 533, width:373, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 822, y: 533, width:10, height: 230, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 448, y: 760, width:384, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'}
+]
 
 // Doors only, with navigation URLs
 const objects = [
@@ -35,101 +60,6 @@ const objects = [
   { element: document.getElementById("door7"), isDoor: true, navigateTo: '../backyard/backyard.html' },
   { element: document.getElementById("door8"), isDoor: true, navigateTo: '../backyard/backyard.html' }
 ];
-
-// Update the cat's position and image based on movement direction
-function updateCatPosition() {
-  if (movement.up && movement.left) {
-    cat.style.backgroundImage = "url('../universal/meow-up-left.png')";
-  } else if (movement.up && movement.right) {
-    cat.style.backgroundImage = "url('../universal/meow-up-right.png')";
-  } else if (movement.down && movement.left) {
-    cat.style.backgroundImage = "url('../universal/meow-down-left.png')";
-  } else if (movement.down && movement.right) {
-    cat.style.backgroundImage = "url('../universal/meow-down-right.png')";
-  } else if (movement.up) {
-    cat.style.backgroundImage = "url('../universal/meow-up.png')";
-  } else if (movement.down) {
-    cat.style.backgroundImage = "url('../universal/meow-down.png')";
-  } else if (movement.left) {
-    cat.style.backgroundImage = "url('../universal/meow-left.png')";
-  } else if (movement.right) {
-    cat.style.backgroundImage = "url('../universal/meow-right.png')";
-  } else {
-    cat.style.backgroundImage = "url('../universal/meow-resting.png')";
-  }
-
-  cat.style.left = `${catX}px`;
-  cat.style.top = `${catY}px`;
-}
-
-// Draw the initial scene including the background image
-function drawScene() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if (background.complete) {
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-  }
-  updateCatPosition();
-}
-
-// Check for collisions with doors only
-function detectCollision() {
-  const catRect = cat.getBoundingClientRect();
-
-  objects.forEach((object) => {
-    const objectRect = object.element.getBoundingClientRect();
-
-    if (
-      catRect.left < objectRect.right &&
-      catRect.right > objectRect.left &&
-      catRect.top < objectRect.bottom &&
-      catRect.bottom > objectRect.top
-    ) {
-      if (object.isDoor) {
-        window.location.href = object.navigateTo;
-      }
-    }
-  });
-}
-
-// Ensure the cat stays within canvas boundaries
-function keepCatInBounds() {
-  const maxX = canvas.width - cat.offsetWidth;
-  const maxY = canvas.height - cat.offsetHeight;
-  catX = Math.max(0, Math.min(maxX, catX));
-  catY = Math.max(0, Math.min(maxY, catY));
-}
-
-// Animation loop
-function animate() {
-  if (movement.up) catY -= catSpeed;
-  if (movement.down) catY += catSpeed;
-  if (movement.left) catX -= catSpeed;
-  if (movement.right) catX += catSpeed;
-
-  keepCatInBounds();
-  drawScene();
-  detectCollision();
-  requestAnimationFrame(animate);
-}
-
-// Keyboard event listeners for movement
-document.addEventListener("keydown", (event) => {
-  switch (event.key) {
-    case "w": movement.up = true; break;
-    case "s": movement.down = true; break;
-    case "a": movement.left = true; break;
-    case "d": movement.right = true; break;
-  }
-});
-
-document.addEventListener("keyup", (event) => {
-  switch (event.key) {
-    case "w": movement.up = false; break;
-    case "s": movement.down = false; break;
-    case "a": movement.left = false; break;
-    case "d": movement.right = false; break;
-  }
-});
 
 // Start the animation
 background.onload = () => {

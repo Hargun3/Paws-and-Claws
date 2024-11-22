@@ -32,6 +32,17 @@ body {
   left: 50px;
 }
 
+#grandma {
+  position: absolute;
+  width: 60px;
+  height: 100px;
+  background-image: url('../universal/meow-left.png'); /* Path to the cat image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 500px;
+  left: 500px;
+}
+
 /* Canvas styling */
 #gameCanvas {
   width: 1280px;
