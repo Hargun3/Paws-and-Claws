@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'bathroom.png'; // Replace with the correct path to your background image
+background.src = '../universal/bathroom.png'; // Replace with the correct path to your background image
 
 // Load the paw print image
 const pawPrint = new Image();

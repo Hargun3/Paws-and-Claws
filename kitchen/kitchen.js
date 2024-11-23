@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'kitchen.png'; // Replace with the correct path to your background image
+background.src = '../universal/kitchen.png'; // Replace with the correct path to your background image
 
 const pawPrint = new Image();
 pawPrint.src = '../universal/pawprint.png';

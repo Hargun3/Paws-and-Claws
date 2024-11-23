@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'hallway.png'; 
+background.src = '../universal/hallway.png'; 
 
 const pawPrint = new Image();
 pawPrint.src = '../universal/pawprint.png';
@@ -42,7 +42,7 @@ const objects = [
 // Define the hallway boundaries (brown area)
 const hallwayBounds = [
   { // Horizontal part of the hallway
-    xMin: 449,
+    xMin: 440,
     xMax: 780,
     yMin: 50,
     yMax: 700
