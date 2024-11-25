@@ -62,9 +62,37 @@ function updateCatPosition(pos_X_offset, pos_Y_offset) {
     } else {
       cat.style.backgroundImage = "url('../universal/meow-resting.png')";
     }
+    if (pawPrintCooldown <= 0) {
+      pawPrints.push({ x: catX + 0, y: catY + 0, opacity: 1.0 }); // Adjust offsets as needed
+      pawPrintCooldown = pawPrintCooldownLimit;
+    } else {
+      pawPrintCooldown--;
+    }
   
     cat.style.left = `${catX-pos_X_offset}px`;
     cat.style.top = `${catY-pos_Y_offset}px`;
+}
+
+let pawPrints = [];
+let pawPrintCooldown = 0;
+const pawPrintCooldownLimit = 7; // Frames between paw prints
+const pawPrintImage = new Image();
+pawPrintImage.src = '../universal/pawprint.png'; 
+
+function drawPawPrints() {
+  for (let i = 0; i < pawPrints.length; i++) {
+    const paw = pawPrints[i];
+    ctx.globalAlpha = paw.opacity; // transparency
+    ctx.drawImage(pawPrintImage, paw.x, paw.y, 14, 14); // size 
+    ctx.globalAlpha = 1; // Reset transparency 
+
+    // Gradually reduce opacity
+    paw.opacity -= 0.01;
+    if (paw.opacity <= 0) {
+      pawPrints.splice(i, 1); // Remove paw print when fully faded
+      i--; 
+    }
+  }
 }
 
 function updateGrandmaPosition(grandma_pos_X_offset, grandma_pos_X_offset){
@@ -99,7 +127,7 @@ function drawScene(walls, pos_X_offset, pos_Y_offset) {
       ctx.fillStyle = walls[i].color;
       ctx.fillRect(walls[i].x, walls[i].y, walls[i].width, walls[i].height);
     }
-    
+    drawPawPrints();
     updateCatPosition(pos_X_offset,pos_Y_offset);
     updateGrandmaPosition(grandma_pos_X_offset,grandma_pos_X_offset);
 }
