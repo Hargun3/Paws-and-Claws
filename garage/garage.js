@@ -9,9 +9,12 @@ canvas.height = 800;
 // Load the background image
 const background = new Image();
 background.src = '../universal/garage.png'; // Replace with the correct path to your background image
+<<<<<<< Updated upstream
 
 const pawPrint = new Image();
 pawPrint.src = '../universal/pawprint.png';
+=======
+>>>>>>> Stashed changes
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");

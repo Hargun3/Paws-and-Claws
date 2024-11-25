@@ -131,4 +131,17 @@ body {
   left: 312px;
   height: auto;
   width: auto;
+<<<<<<< Updated upstream
+=======
+}
+#grandma {
+  position: absolute;
+  width: 60px;
+  height: 100px;
+  background-image: url('../universal/gram.png'); /* Path to the cat image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 500px;
+  left: 500px;
+>>>>>>> Stashed changes
 }

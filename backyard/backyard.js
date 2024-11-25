@@ -9,17 +9,35 @@ canvas.height = 800;
 // Load the background image
 const background = new Image();
 background.src = '../universal/backyard.png'; // Replace with the correct path to your background image
+<<<<<<< Updated upstream
 
 
 // Load the paw print image
 const pawPrint = new Image();
 pawPrint.src = '../universal/pawprint.png';
+=======
+>>>>>>> Stashed changes
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
 let catX = 200; // Initial X position
 let catY = 200; // Initial Y position
+<<<<<<< Updated upstream
 const catSpeed = 6; // Cat speed for movement
+=======
+let catR = 41;
+let pos_X_offset = 50;
+let pos_Y_offset = 50;
+const catSpeed = 6; // Cat speed for movement
+
+const grandma = document.getElementById("grandma");
+let grandmaX = 400;
+let grandmaY = 500;
+let grandmaR = 17;
+let grandma_pos_X_offset = 23;
+let grandma_pos_Y_offset = 23;
+let grandmaSpeed = 1;
+>>>>>>> Stashed changes
 
 // Movement tracking
 const movement = {
@@ -28,6 +46,13 @@ const movement = {
   left: false,
   right: false
 };
+
+obstacles_opacity = 0.3
+const obstacles = [
+  {x: 29, y: 445, width: 165, height: 327, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
+  {x: 1170, y: 335, width: 80, height: 230, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
+  {x: 1143, y: 190, width: 105, height: 150, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
+]
 
 // Breakable objects and status tracking, including the door with isDoor property
 const objects = [
@@ -47,6 +72,7 @@ let pawPrints = [];
 let pawPrintCooldown = 0;
 const pawPrintCooldownLimit = 7;
 
+<<<<<<< Updated upstream
 // Update the cat's position and image based on movement direction
 function updateCatPosition() {
   // Set the cat's direction based on movement
@@ -212,6 +238,8 @@ document.addEventListener("keyup", (event) => {
     case "d": movement.right = false; break;
   }
 });
+=======
+>>>>>>> Stashed changes
 
 // Start the animation
 background.onload = () => {
