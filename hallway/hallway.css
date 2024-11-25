@@ -56,8 +56,7 @@ img[id^="door"] {
 #door6 { top: 230px; left: 822px; width: 10px; height: 55px; }
 #door7 { top: 60px; left: 720px; width: 55px; height: 10px;}
 #door8 { top: 60px; left: 520px; width: 55px; height: 10px;}
-<<<<<<< Updated upstream
-=======
+
 
 #grandma {
   position: absolute;
@@ -69,4 +68,3 @@ img[id^="door"] {
   top: 500px;
   left: 500px;
 }
->>>>>>> Stashed changes
