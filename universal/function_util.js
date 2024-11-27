@@ -63,7 +63,7 @@ function updateCatPosition(pos_X_offset, pos_Y_offset) {
       cat.style.backgroundImage = "url('../universal/meow-resting.png')";
     }
     if (pawPrintCooldown <= 0) {
-      pawPrints.push({ x: catX + 0, y: catY + 0, opacity: 1.0 }); // Adjust offsets as needed
+      pawPrints.push({ x: catX + 0, y: catY + 0, opacity: 1.0 }); //offsets
       pawPrintCooldown = pawPrintCooldownLimit;
     } else {
       pawPrintCooldown--;
