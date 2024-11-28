@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = '../universal/hallway.png'; // Replace with the correct path to your background image
+background.src = '../universal/f2hallway.png'; // Replace with the correct path to your background image
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
@@ -50,15 +50,15 @@ const obstacles = [
 
 // Doors only, with navigation URLs
 const objects = [
-  { element: document.getElementById("door1"), isDoor: true, navigateTo: '../livingroom/livingroom.html' },
-  { element: document.getElementById("door2"), isDoor: true, navigateTo: '../bathroom/bathroom.html' },
-  { element: document.getElementById("door3"), isDoor: true, navigateTo: '../garage/garage.html' },
-  { element: document.getElementById("door4"), isDoor: true, navigateTo: '../garage/garage.html' },
-  { element: document.getElementById("door5"), isDoor: true, navigateTo: '../kitchen/kitchen.html' },
-  { element: document.getElementById("door6"), isDoor: true, navigateTo: '../kitchen/kitchen.html' },
-  { element: document.getElementById("door7"), isDoor: true, navigateTo: '../backyard/backyard.html' },
-  { element: document.getElementById("door8"), isDoor: true, navigateTo: '../backyard/backyard.html' },
-  {element: document.getElementById("stairs"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html' }
+  { element: document.getElementById("door1"), isDoor: true, navigateTo: '../f2bedroom/f2bedroom.html' },
+  { element: document.getElementById("door2"), isDoor: true, navigateTo: '../f2bathroom/f2bathroom.html' },
+  { element: document.getElementById("door3"), isDoor: true, navigateTo: '../f2bedroom2/f2bedroom2.html' },
+  { element: document.getElementById("door4"), isDoor: true, navigateTo: '../f2bedroom2/f2bedroom2.html' },
+  { element: document.getElementById("door5"), isDoor: true, navigateTo: '../library/library.html' },
+  { element: document.getElementById("door6"), isDoor: true, navigateTo: '../library/library.html' },
+  { element: document.getElementById("door7"), isDoor: true, navigateTo: '../balcony/balcony.html' },
+  { element: document.getElementById("door8"), isDoor: true, navigateTo: '../balcony/balcony.html' },
+  {element: document.getElementById("stairs"), isDoor: true, navigateTo: '../hallway/hallway.html' }
 ];
 
 // Start the animation
