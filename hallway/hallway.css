@@ -89,4 +89,61 @@ img[id^="door"] {
   right: 20px; /* Adjust based on your layout */
   z-index: 100; /* Ensure it appears above other elements */
 }
+/* Overlay styles */
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Dimmed background */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 200; /* Ensure it appears above everything */
+}
+
+/* Pause menu container */
+.pause-menu {
+  position: relative;
+  width: 426px; /* Adjust to fit your PNG dimensions */
+  height: 324px; /* Adjust to fit your PNG dimensions */
+  background: url('../universal/pause-menu.png') no-repeat center center;
+  background-size: contain;
+}
+
+/* Menu buttons */
+.menu-btn {
+  position: relative; /* Allows precise placement on the PNG */
+  width: 300px;
+  height: 67px;
+  background: #F6BF3E;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menu-btn:hover {
+  background: #0056b3;
+}
+
+.resume-btn {
+  top: 100px; /* Adjust based on the PNG layout */
+  left: 150px; /* Adjust based on the PNG layout */
+}
+
+.restart-btn {
+  top: 150px; /* Adjust based on the PNG layout */
+  left: 150px; /* Adjust based on the PNG layout */
+}
+
+.exit-btn {
+  top: 500px; /* Adjust based on the PNG layout */
+  left: 400 px; /* Adjust based on the PNG layout */
+}
+
 

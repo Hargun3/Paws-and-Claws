@@ -262,17 +262,45 @@ function detectCollision() {
     console.log(`Collision detected with object ${index + 1}`);
   }
 
-  let isPaused = false; // Tracks if the game is paused
+// Pause and Resume Functions
+let isPaused = false; // Tracks if the game is paused
+const pauseOverlay = document.getElementById("pauseOverlay");
 
 // Pause and Resume Functions
 function togglePause() {
   isPaused = !isPaused;
 
   if (isPaused) {
-    console.log("Game Paused");
+    pauseOverlay.style.display = "flex"; // Show the overlay
   } else {
-    console.log("Game Resumed");
+    pauseOverlay.style.display = "none"; // Hide the overlay
     requestAnimationFrame(animate); // Resume the game loop
   }
 }
+
+// Restart the game
+function restartGame() {
+  // Reset all game state variables
+  catX = 600;
+  catY = 500;
+  grandmaX = 500;
+  grandmaY = 600;
+  grandmaSpeed = 1;
+  pawPrints = [];
+  
+  // Hide overlay and resume game
+  pauseOverlay.style.display = "none";
+  isPaused = false;
+  requestAnimationFrame(animate);
+}
+
+// Exit the game
+function exitGame() {
+  window.location.href = '../StartScreen/start.html'; // Redirect to the start screen or exit
+}
+
+// Attach event listeners
 document.getElementById("pauseButton").addEventListener("click", togglePause);
+document.getElementById("resumeButton").addEventListener("click", togglePause);
+document.getElementById("restartButton").addEventListener("click", restartGame);
+document.getElementById("exitButton").addEventListener("click", exitGame);
