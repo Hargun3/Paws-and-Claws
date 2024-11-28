@@ -50,7 +50,7 @@ const obstacles = [
 
 // Doors only, with navigation URLs
 const objects = [
-  { element: document.getElementById("door1"), isDoor: true, navigateTo: '../f2bedroom/f2bedroom.html' },
+  { element: document.getElementById("door1"), isDoor: true, navigateTo: '../f2bedroom1/f2bedroom1.html' },
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../f2bathroom/f2bathroom.html' },
   { element: document.getElementById("door3"), isDoor: true, navigateTo: '../f2bedroom2/f2bedroom2.html' },
   { element: document.getElementById("door4"), isDoor: true, navigateTo: '../f2bedroom2/f2bedroom2.html' },

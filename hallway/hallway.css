@@ -76,3 +76,17 @@ img[id^="door"] {
   top: 500px;
   left: 500px;
 }
+
+.pause-btn {
+  width: 50px; /* Adjust to fit your PNG size */
+  height: 50px;
+  background: url('../universal/meow-resting.png') no-repeat center center; /* Replace with your PNG path */
+  background-size: contain;
+  border: none; /* Remove default button styles */
+  cursor: pointer;
+  position: absolute; /* Position it on the game screen */
+  top: 20px; /* Adjust based on your layout */
+  right: 20px; /* Adjust based on your layout */
+  z-index: 100; /* Ensure it appears above other elements */
+}
+

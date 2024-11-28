@@ -186,6 +186,7 @@ function wallCollision(walls){
 // Animation loop
 function animate() {
     // Keyboard event listeners for movement
+    if (isPaused) return;
     document.addEventListener("keydown", (event) => {
       switch (event.key) {
         case "w": movement.up = true; break;
@@ -260,4 +261,18 @@ function detectCollision() {
   
     console.log(`Collision detected with object ${index + 1}`);
   }
-  
+
+  let isPaused = false; // Tracks if the game is paused
+
+// Pause and Resume Functions
+function togglePause() {
+  isPaused = !isPaused;
+
+  if (isPaused) {
+    console.log("Game Paused");
+  } else {
+    console.log("Game Resumed");
+    requestAnimationFrame(animate); // Resume the game loop
+  }
+}
+document.getElementById("pauseButton").addEventListener("click", togglePause);

@@ -61,6 +61,7 @@ const objects = [
   {element: document.getElementById("stairs"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html' }
 ];
 
+
 // Start the animation
 background.onload = () => {
   requestAnimationFrame(animate);
