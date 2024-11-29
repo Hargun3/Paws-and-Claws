@@ -24,4 +24,8 @@ function startGame() {
   
     // Redirect to the first level (e.g., kitchen.html)
     window.location.href = '../hallway/hallway.html';
-  }
+}
+
+function statementPage(){
+    window.location.href = '../statement/statement.html';
+}
