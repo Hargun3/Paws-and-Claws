@@ -186,3 +186,93 @@ body {
   top: 500px;
   left: 500px;
 }
+
+.pause-btn {
+  width: 50px; /* Adjust to fit your PNG size */
+  height: 50px;
+  background: url('../universal/pause.png') no-repeat center center; /* Replace with your PNG path */
+  background-size: contain;
+  border: none; /* Remove default button styles */
+  cursor: pointer;
+  position: absolute; /* Position it on the game screen */
+  top: 20px; /* Adjust based on your layout */
+  right: 20px; /* Adjust based on your layout */
+  z-index: 100; /* Ensure it appears above other elements */
+}
+/* Overlay styles */
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Dimmed background */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 200; /* Ensure it appears above everything */
+}
+
+/* Pause menu container */
+.pause-menu {
+  position: relative; /* Ensures buttons are positioned inside this container */
+  width: 426px;
+  height: 324px;
+  background: url('../universal/pause-menu.png') no-repeat center center;
+  background-size: contain;
+  display: flex; /* Flexbox container */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: space-around; /* Add equal spacing between buttons */
+  align-items: center; /* Center horizontally */
+}
+h1 {
+  font-size: 50px; /* Change this to your desired size */
+  font-weight: bold; /* Makes the text bold */
+  color: #ffffff; /* Change the color if desired */
+  text-align: center; /* Center the text horizontally */
+  position: relative; /* Position the text absolutely */
+  top: -50px; /* Position the text vertically (50% of the screen height) */
+  left: 150px; /* Position it horizontally (50% of the screen width) */
+  transform: translate(-50%, -50%); /* Adjust the position to perfectly center */
+  margin: 0; /* Remove any default margin */
+}
+
+.menu-btn {
+  position: relative;
+  width: 280px; /* Adjust based on your design */
+  height: 60px;
+  background: #F6BF3E; /* Button background color */
+  border-radius: 10px; /* Rounded corners */
+  border: none; /* Remove default border */
+  font-family: 'Monstress', 'Arial', sans-serif; /* Use a similar font */
+  font-weight: bold;
+  font-size: 40px;
+  color: #000; /* Black text */
+  text-align: center;
+  cursor: pointer;
+  margin: 10px 0; /* Add space between buttons */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: background 0.3s;
+}
+
+.menu-btn:hover {
+  background: #0056b3;
+}
+
+.resume-btn {
+  position: absolute;
+  top: 50px; /* Adjust based on the PNG layout */
+  left: 150px; /* Adjust based on the PNG layout */
+}
+
+.restart-btn {
+  position: absolute;
+  top: 150px; /* Adjust based on the PNG layout */
+  left: 150px; /* Adjust based on the PNG layout */
+}
+
+.exit-btn {
+  position: absolute;
+  top: 900px; /* Adjust based on the PNG layout */
+  left: 400px; /* Adjust based on the PNG layout */
+}

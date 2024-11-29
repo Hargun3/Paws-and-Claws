@@ -11,6 +11,15 @@
     <canvas id="gameCanvas"></canvas>
     <div id="cat"></div>
     <div id="grandma"></div>
+    <button id="pauseButton" class="pause-btn"></button>
+    <div id="pauseOverlay" class="pause-overlay">
+      <div class="pause-menu">
+        <h1>Game Paused</h1>
+        <button id="resumeButton" class="menu-btn">Resume</button>
+        <button id="restartButton" class="menu-btn">Restart</button>
+        <button id="exitButton" class="menu-btn">Quit</button>
+      </div>
+    </div>
     <img src="../universal/bigy.png" alt="Object 2" class="breakableObject" id="object2">
     <img src="../universal/smolb.png" alt="Object 3" class="breakableObject" id="object3">
     <img src="../universal/smoly.png" alt="Object 5" class="breakableObject" id="object5">
@@ -22,7 +31,7 @@
   </div>
   <script src="f2bedroom1.js"></script>
   <script src="../universal/function_util.js"></script>
-  <div id="timer">Time Left: 5:00</div>
+
 
 </body>
 </html>

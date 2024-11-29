@@ -126,7 +126,7 @@ img[id^="door"] {
 .pause-btn {
   width: 50px; /* Adjust to fit your PNG size */
   height: 50px;
-  background: url('../universal/meow-resting.png') no-repeat center center; /* Replace with your PNG path */
+  background: url('../universal/pause.png') no-repeat center center; /* Replace with your PNG path */
   background-size: contain;
   border: none; /* Remove default button styles */
   cursor: pointer;
