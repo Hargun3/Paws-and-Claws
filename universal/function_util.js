@@ -16,7 +16,7 @@ function updateGrandmaSpeed(){
   
         // Calculate time elapsed and adjust countdown
         const elapsed = Math.floor((now - lastUpdated) / 10000);
-        let newCountdown = Math.min(10, countdown + elapsed);
+        let newCountdown = Math.min(0, countdown + elapsed);
   
         if (newCountdown !== countdown) {
             if(newCountdown !== NaN){

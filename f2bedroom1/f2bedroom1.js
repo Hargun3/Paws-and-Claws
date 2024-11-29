@@ -35,11 +35,11 @@ const movement = {
   right: false
 };
 
-obstacles_opacity = 0.0
+obstacles_opacity = 0.3
 const obstacles = [
-  {x: 0, y: 0, width: 0, height: 0, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
-  {x: 0, y: 0, width: 0, height: 0, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
-  {x: 0, y: 0, width: 0, height: 0, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
+  {x: 30, y: 75, width: 80, height: 650, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
+  {x: 473, y: 30, width: 330, height: 295, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
+  {x: 920, y: 650, width: 320, height: 100, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
 ]
 
 // Breakable objects and status tracking, including the door with isDoor property
