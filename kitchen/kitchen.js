@@ -27,6 +27,11 @@ let grandma_pos_X_offset = 23;
 let grandma_pos_Y_offset = 23;
 let grandmaSpeed = 1;
 
+let randomNumber = Math.random();
+let treatVisibility = randomNumber > 0.5;
+document.getElementById("object10").style.visibility = treatVisibility? 'visible' : 'hidden';
+
+
 // Movement tracking
 const movement = {
   up: false,
@@ -48,6 +53,7 @@ const objects = [
   { element: document.getElementById("object3"), brokenSrc: '../universal/broken-ipad.png', type: "break" },
   { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png', type: "break" },
   { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
+  { element: document.getElementById("object10"), brokenSrc: '../universal/broken-smolb.png', type: "treat", visibility: treatVisibility },
   { element: document.getElementById("door"), isDoor: true, navigateTo: '../hallway/hallway.html' },
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../hallway/hallway.html'}
 ];

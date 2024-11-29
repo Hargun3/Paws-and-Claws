@@ -16,7 +16,7 @@ function updateGrandmaSpeed(){
   
         // Calculate time elapsed and adjust countdown
         const elapsed = Math.floor((now - lastUpdated) / 10000);
-        let newCountdown = Math.min(100, countdown + elapsed);
+        let newCountdown = Math.min(0, countdown + elapsed);
   
         if (newCountdown !== countdown) {
             if(newCountdown !== NaN){
@@ -142,6 +142,15 @@ function drawScene(walls, pos_X_offset, pos_Y_offset) {
     }
     const breakElement = document.getElementById('break');
     breakElement.textContent = breakValue;
+
+    if (!localStorage.getItem('treat')) {
+      localStorage.setItem('treat', '0');
+      treatValue = 1;
+    }else{
+      treatValue = localStorage.getItem('treat');
+    }
+    const treatElement = document.getElementById('treat');
+    treatElement.textContent = treatValue;
   
     const catRect = cat.getBoundingClientRect();
   
@@ -258,20 +267,23 @@ function animate() {
         breakValue = breakValue + 1;
         localStorage.setItem('break', breakValue.toString());
       }
-    }else if(object.type == "treat"){
+    }else if(object.type == "treat" && object.visibility){
       if (!localStorage.getItem('treat')) {
         localStorage.setItem('treat', '1');
-        breakValue = 1;
+        treatValue = 1;
       }else{
-        breakValue = parseInt(localStorage.getItem('treat'), 10);
-        breakValue = breakValue + 1;
-        localStorage.setItem('treat', breakValue.toString());
+        treatValue = parseInt(localStorage.getItem('treat'), 10);
+        treatValue = treatValue + 1;
+        localStorage.setItem('treat', treatValue.toString());
       }
     }
     
   
     const breakElement = document.getElementById('break');
     breakElement.textContent = breakValue;
+
+    const treatElement = document.getElementById('treat');
+    treatElement.textContent = treatValue;
   
   
   
