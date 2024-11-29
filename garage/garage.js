@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'garage.png'; // Replace with the correct path to your background image
+background.src = '../universal/garage.png'; // Replace with the correct path to your background image
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
@@ -40,8 +40,6 @@ const obstacles = [
   {x: 375, y: 195, width: 205, height: 415, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
   {x: 905, y: 195, width: 205, height: 415, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
 ]
-
-
 // Breakable objects and status tracking, including the door with isDoor property
 const objects = [
   { element: document.getElementById("object1"), brokenSrc: '../universal/broken-bigp.png' },
@@ -55,7 +53,6 @@ const objects = [
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../hallway/hallway.html'}
 ];
 const objectStates = [false, false, false, false, false, false, false, false]; // Tracks whether objects are broken
-
 // Start the animation
 background.onload = () => {
   requestAnimationFrame(animate);

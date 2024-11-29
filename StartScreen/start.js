@@ -1,4 +1,3 @@
-// Function to transition from the start screen to the game
 function startGame() {
   localStorage.clear();
   // Hide the start screen

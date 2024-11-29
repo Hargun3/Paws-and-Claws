@@ -16,7 +16,7 @@ function updateGrandmaSpeed(){
   
         // Calculate time elapsed and adjust countdown
         const elapsed = Math.floor((now - lastUpdated) / 10000);
-        let newCountdown = Math.min(10, countdown + elapsed);
+        let newCountdown = Math.min(0, countdown + elapsed);
   
         if (newCountdown !== countdown) {
             if(newCountdown !== NaN){
@@ -62,9 +62,37 @@ function updateCatPosition(pos_X_offset, pos_Y_offset) {
     } else {
       cat.style.backgroundImage = "url('../universal/meow-resting.png')";
     }
+    if (pawPrintCooldown <= 0) {
+      pawPrints.push({ x: catX + 0, y: catY + 0, opacity: 1.0 }); //offsets
+      pawPrintCooldown = pawPrintCooldownLimit;
+    } else {
+      pawPrintCooldown--;
+    }
   
     cat.style.left = `${catX-pos_X_offset}px`;
     cat.style.top = `${catY-pos_Y_offset}px`;
+}
+
+let pawPrints = [];
+let pawPrintCooldown = 0;
+const pawPrintCooldownLimit = 7; // Frames between paw prints
+const pawPrintImage = new Image();
+pawPrintImage.src = '../universal/pawprint.png'; 
+
+function drawPawPrints() {
+  for (let i = 0; i < pawPrints.length; i++) {
+    const paw = pawPrints[i];
+    ctx.globalAlpha = paw.opacity; // transparency
+    ctx.drawImage(pawPrintImage, paw.x, paw.y, 14, 14); // size 
+    ctx.globalAlpha = 1; // Reset transparency 
+
+    // Gradually reduce opacity
+    paw.opacity -= 0.01;
+    if (paw.opacity <= 0) {
+      pawPrints.splice(i, 1); // Remove paw print when fully faded
+      i--; 
+    }
+  }
 }
 
 function updateGrandmaPosition(grandma_pos_X_offset, grandma_pos_X_offset){
@@ -74,7 +102,7 @@ function updateGrandmaPosition(grandma_pos_X_offset, grandma_pos_X_offset){
 
     // Collision detection between red circle and green circle
     if (distance < catR + grandmaR) {
-        // window.location.href = '../StartScreen/start.html'; // Redirect to another page
+        window.location.href = '../StartScreen/start.html'; // Redirect to another page
     }
 
     if (distance > 0) {
@@ -99,45 +127,44 @@ function drawScene(walls, pos_X_offset, pos_Y_offset) {
       ctx.fillStyle = walls[i].color;
       ctx.fillRect(walls[i].x, walls[i].y, walls[i].width, walls[i].height);
     }
-    
+    drawPawPrints();
     updateCatPosition(pos_X_offset,pos_Y_offset);
     updateGrandmaPosition(grandma_pos_X_offset,grandma_pos_X_offset);
 }
 
-
-// Check for collisions with objects
-function detectCollision() {
-  if (!localStorage.getItem('break')) {
-    localStorage.setItem('break', '0');
-    breakValue = 1;
-  }else{
-    breakValue = localStorage.getItem('break');
-  }
-  const breakElement = document.getElementById('break');
-  breakElement.textContent = breakValue;
-
-  const catRect = cat.getBoundingClientRect();
-
-  objects.forEach((object, index) => {
-    const objectRect = object.element.getBoundingClientRect();
-
-    if (
-      catRect.left < objectRect.right &&
-      catRect.right > objectRect.left &&
-      catRect.top < objectRect.bottom &&
-      catRect.bottom > objectRect.top
-    ) {
-      if (object.isDoor) {
-        // Navigate to bathroom.html if the door is hit
-        window.location.href = object.navigateTo;
-        
-      }  
-      else if (!objectStates[index]) {
-        handleCollision(object, index);
-      }
+  // Check for collisions with doors only
+  function detectCollision() {
+    if (!localStorage.getItem('break')) {
+      localStorage.setItem('break', '0');
+      breakValue = 1;
+    }else{
+      breakValue = localStorage.getItem('break');
     }
-  });
-}
+    const breakElement = document.getElementById('break');
+    breakElement.textContent = breakValue;
+  
+    const catRect = cat.getBoundingClientRect();
+  
+    objects.forEach((object, index) => {
+      const objectRect = object.element.getBoundingClientRect();
+  
+      if (
+        catRect.left < objectRect.right &&
+        catRect.right > objectRect.left &&
+        catRect.top < objectRect.bottom &&
+        catRect.bottom > objectRect.top
+      ) {
+        if (object.isDoor) {
+          // Navigate to bathroom.html if the door is hit
+          window.location.href = object.navigateTo;
+          
+        }  
+        else if (!objectStates[index]) {
+          handleCollision(object, index);
+        }
+      }
+    });
+  }
 
   // Ensure the cat stays within canvas boundaries
 function keepCatInBounds() {
@@ -173,6 +200,7 @@ function wallCollision(walls){
 // Animation loop
 function animate() {
     // Keyboard event listeners for movement
+    if (isPaused) return;
     document.addEventListener("keydown", (event) => {
       switch (event.key) {
         case "w": movement.up = true; break;
@@ -204,37 +232,79 @@ function animate() {
     requestAnimationFrame(animate);
   }
 
-
   
-// Handle collision events
-function handleCollision(object, index) {
-  objectStates[index] = true; // Mark the object as broken
 
-  // Add the smokey effect when the cat collides with an object
-  object.element.classList.add('smokey'); // Add the smokey class for animation
-
-  setTimeout(() => {
-    // Change the image source after the animation
-    object.element.src = object.brokenSrc; // Replace with the broken version of the object
-    object.element.style.opacity = '1'; // Ensure full opacity after image change
-    object.element.classList.remove('smokey'); // Remove the smokey class to reset
-  }, 1000); // Wait for the animation to complete
-
-  if (!localStorage.getItem('break')) {
-    localStorage.setItem('break', '1');
-    breakValue = 1;
-  }else{
-    breakValue = parseInt(localStorage.getItem('break'), 10);
-    breakValue = breakValue + 1;
-    localStorage.setItem('break', breakValue.toString());
+// Check for collisions with objects
+  // Handle collision events
+  function handleCollision(object, index) {
+    objectStates[index] = true; // Mark the object as broken
+  
+    // Add the smokey effect when the cat collides with an object
+    object.element.classList.add('smokey'); // Add the smokey class for animation
+  
+    setTimeout(() => {
+      // Change the image source after the animation
+      object.element.src = object.brokenSrc; // Replace with the broken version of the object
+      object.element.style.opacity = '1'; // Ensure full opacity after image change
+      object.element.classList.remove('smokey'); // Remove the smokey class to reset
+    }, 1000); // Wait for the animation to complete
+  
+    if (!localStorage.getItem('break')) {
+      localStorage.setItem('break', '1');
+      breakValue = 1;
+    }else{
+      breakValue = parseInt(localStorage.getItem('break'), 10);
+      breakValue = breakValue + 1;
+      localStorage.setItem('break', breakValue.toString());
+    }
+  
+    const breakElement = document.getElementById('break');
+    breakElement.textContent = breakValue;
+  
+  
+  
+  
+    console.log(`Collision detected with object ${index + 1}`);
   }
+// Pause and Resume Functions
+let isPaused = false; // Tracks if the game is paused
+const pauseOverlay = document.getElementById("pauseOverlay");
 
-  const breakElement = document.getElementById('break');
-  breakElement.textContent = breakValue;
+// Pause and Resume Functions
+function togglePause() {
+  isPaused = !isPaused;
 
-
-
-
-  console.log(`Collision detected with object ${index + 1}`);
+  if (isPaused) {
+    pauseOverlay.style.display = "flex"; // Show the overlay
+  } else {
+    pauseOverlay.style.display = "none"; // Hide the overlay
+    requestAnimationFrame(animate); // Resume the game loop
+  }
 }
+
+// Restart the game
+function restartGame() {
+  // Reset all game state variables
+  catX = 600;
+  catY = 500;
+  grandmaX = 500;
+  grandmaY = 600;
+  grandmaSpeed = 1;
+  pawPrints = [];
   
+  // Hide overlay and resume game
+  pauseOverlay.style.display = "none";
+  isPaused = false;
+  requestAnimationFrame(animate);
+}
+
+// Exit the game
+function exitGame() {
+  window.location.href = '../StartScreen/start.html'; // Redirect to the start screen or exit
+}
+
+// Attach event listeners
+document.getElementById("pauseButton").addEventListener("click", togglePause);
+document.getElementById("resumeButton").addEventListener("click", togglePause);
+document.getElementById("restartButton").addEventListener("click", restartGame);
+document.getElementById("exitButton").addEventListener("click", exitGame);

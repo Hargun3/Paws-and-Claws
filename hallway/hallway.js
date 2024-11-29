@@ -1,4 +1,3 @@
-
 // Canvas and context setup
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -9,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'hallway.png'; // Replace with the correct path to your background image
+background.src = '../universal/hallway.png'; // Replace with the correct path to your background image
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
@@ -28,6 +27,7 @@ let grandma_pos_X_offset = 23;
 let grandma_pos_Y_offset = 23;
 let grandmaSpeed = 1;
 
+
 // Movement tracking
 const movement = {
   up: false,
@@ -36,7 +36,6 @@ const movement = {
   right: false
 };
 
-// Wall objects list
 walls_opacity = 0
 const obstacles = [
   {x: 448, y: 60, width: 10, height: 712, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
@@ -58,8 +57,10 @@ const objects = [
   { element: document.getElementById("door5"), isDoor: true, navigateTo: '../kitchen/kitchen.html' },
   { element: document.getElementById("door6"), isDoor: true, navigateTo: '../kitchen/kitchen.html' },
   { element: document.getElementById("door7"), isDoor: true, navigateTo: '../backyard/backyard.html' },
-  { element: document.getElementById("door8"), isDoor: true, navigateTo: '../backyard/backyard.html' }
+  { element: document.getElementById("door8"), isDoor: true, navigateTo: '../backyard/backyard.html' },
+  {element: document.getElementById("stairs"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html' }
 ];
+
 
 // Start the animation
 background.onload = () => {

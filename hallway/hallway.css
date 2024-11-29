@@ -3,7 +3,7 @@ body {
   margin: 0;
   overflow: hidden;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
@@ -29,47 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  z-index: 1;
 }
-
-/* Cat element styling */
-#cat {
-  position: absolute;
-  width: 60px;
-  height: 100px;
-  background-image: url('meow.png'); /* Path to the cat image */
-  background-size: contain;
-  background-repeat: no-repeat;
-  top: 50px;
-  left: 50px;
-}
-
-#grandma {
-  position: absolute;
-  width: 60px;
-  height: 100px;
-  background-image: url('../universal/meow-left.png'); /* Path to the cat image */
-  background-size: contain;
-  background-repeat: no-repeat;
-  top: 500px;
-  left: 500px;
-}
-
-/* Canvas styling */
-#gameCanvas {
-  width: 1280px;
-  height: 800px;
-  background-color: #7c6c61;
-  border-radius: 10px;
-}
-
-/* Door styling */
-img[id^="door"] {
-  position: absolute;
-  width: auto;
-  height: auto;
-}
-
 
 .scoreboard-container {
   position: absolute;
@@ -106,6 +66,32 @@ img[id^="door"] {
   margin: -10px 45px;
 }
 
+/* Cat element styling */
+#cat {
+  position: absolute;
+  width: 60px;
+  height: 100px;
+  background-image: url('meow.png'); /* Path to the cat image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 50px;
+  left: 50px;
+}
+
+/* Canvas styling */
+#gameCanvas {
+  width: 1280px;
+  height: 800px;
+  background-color: #7c6c61;
+  border-radius: 10px;
+}
+
+/* Door styling */
+img[id^="door"] {
+  position: absolute;
+  width: auto;
+  height: auto;
+}
 
 /* Positions for doors */
 #door1 { top: 160px; left: 447px; width: 10px; height: 55px;}
@@ -114,5 +100,117 @@ img[id^="door"] {
 #door4 { top: 533px; left: 1065px; width: 55px; height: 10px; }
 #door5 { top: 366px; left: 856px; width: 55px; height: 10px; }
 #door6 { top: 230px; left: 822px; width: 10px; height: 55px; }
-#door7 { top: 60px; left: 740px; width: 55px; height: 10px;}
-#door8 { top: 60px; left: 550px; width: 55px; height: 10px;}
+#door7 { top: 60px; left: 720px; width: 55px; height: 10px;}
+#door8 { top: 60px; left: 520px; width: 55px; height: 10px;}
+
+#stairs {
+  position: absolute;
+  width: auto; 
+  height: auto; 
+  top: 128px; 
+  left: 606px;
+}
+
+
+#grandma {
+  position: absolute;
+  width: 60px;
+  height: 100px;
+  background-image: url('../universal/gram.png'); /* Path to the cat image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 500px;
+  left: 500px;
+}
+
+.pause-btn {
+  width: 50px; /* Adjust to fit your PNG size */
+  height: 50px;
+  background: url('../universal/meow-resting.png') no-repeat center center; /* Replace with your PNG path */
+  background-size: contain;
+  border: none; /* Remove default button styles */
+  cursor: pointer;
+  position: absolute; /* Position it on the game screen */
+  top: 20px; /* Adjust based on your layout */
+  right: 20px; /* Adjust based on your layout */
+  z-index: 100; /* Ensure it appears above other elements */
+}
+/* Overlay styles */
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Dimmed background */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 200; /* Ensure it appears above everything */
+}
+
+/* Pause menu container */
+.pause-menu {
+  position: relative; /* Ensures buttons are positioned inside this container */
+  width: 426px;
+  height: 324px;
+  background: url('../universal/pause-menu.png') no-repeat center center;
+  background-size: contain;
+  display: flex; /* Flexbox container */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: space-around; /* Add equal spacing between buttons */
+  align-items: center; /* Center horizontally */
+}
+h1 {
+  font-size: 50px; /* Change this to your desired size */
+  font-weight: bold; /* Makes the text bold */
+  color: #ffffff; /* Change the color if desired */
+  text-align: center; /* Center the text horizontally */
+  position: relative; /* Position the text absolutely */
+  top: -50px; /* Position the text vertically (50% of the screen height) */
+  left: 150px; /* Position it horizontally (50% of the screen width) */
+  transform: translate(-50%, -50%); /* Adjust the position to perfectly center */
+  margin: 0; /* Remove any default margin */
+}
+
+.menu-btn {
+  position: relative;
+  width: 280px; /* Adjust based on your design */
+  height: 60px;
+  background: #F6BF3E; /* Button background color */
+  border-radius: 10px; /* Rounded corners */
+  border: none; /* Remove default border */
+  font-family: 'Monstress', 'Arial', sans-serif; /* Use a similar font */
+  font-weight: bold;
+  font-size: 40px;
+  color: #000; /* Black text */
+  text-align: center;
+  cursor: pointer;
+  margin: 10px 0; /* Add space between buttons */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: background 0.3s;
+}
+
+.menu-btn:hover {
+  background: #0056b3;
+}
+
+.resume-btn {
+  position: absolute;
+  top: 50px; /* Adjust based on the PNG layout */
+  left: 150px; /* Adjust based on the PNG layout */
+}
+
+.restart-btn {
+  position: absolute;
+  top: 150px; /* Adjust based on the PNG layout */
+  left: 150px; /* Adjust based on the PNG layout */
+}
+
+.exit-btn {
+  position: absolute;
+  top: 900px; /* Adjust based on the PNG layout */
+  left: 400px; /* Adjust based on the PNG layout */
+}
+
+

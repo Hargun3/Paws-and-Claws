@@ -1,0 +1,165 @@
+/* General page styling */
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  #game-container {
+    position: relative;
+    width: 1280px;
+    height: 800px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Cat element styling */
+  #cat {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('meow.png'); /* Path to the cat image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 200px;
+    left: 200px;
+  }
+  
+  /* Canvas styling */
+  #gameCanvas {
+    width: 1280px;
+    height: 800px;
+    background-color: #7c6c61;
+    border-radius: 10px;
+  }
+  
+  /* Breakable object styling */
+  .breakableObject {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  /* Smokey effect */
+  @keyframes smokeEffect {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0px);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+      filter: blur(5px);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+      filter: blur(10px);
+    }
+  }
+  
+  .smokey {
+    animation: smokeEffect 1s forwards;
+  }
+  
+  /* Initial positions for objects */
+  #object1 { 
+    top: 640px;
+    left: 50px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object2 {
+    top: 636px;
+    left: 1051px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object3 {
+    top: 44px;
+    left: 505px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object4 {
+    top: 281px;
+    left: 435px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object5 {
+    top: 47px;
+    left: 571px;
+    height: auto;
+    width: auto;
+  }
+  
+  #door {
+    top: 770px;
+    left: 236px;
+    height: auto;
+    width: auto;
+  }
+  #door2 {
+    top: 770px;
+    left: 909px;
+    height: auto; 
+    width: auto;
+  }
+  
+  #object6 {
+    top: 117px;
+    left: 1196px;
+    height: auto;
+    width: auto;
+  }
+  
+  #object7 {
+    top: 303px;
+    left: 387px;
+    height: auto;
+    width: auto;
+  }
+
+  #object10 {
+    top: 34px;
+    left: 130px;
+    height: auto;
+    width: auto;
+  }
+
+  #object11 {
+    top: 154px;
+    left: 895px;
+    height: auto;
+    width: auto;
+  }
+  #object12 {
+    top: 509px;
+    left: 759px;
+    height: auto;
+    width: auto;
+  }
+
+  #grandma {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('../universal/gram.png'); /* Path to the cat image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 500px;
+    left: 500px;
+  }

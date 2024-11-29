@@ -8,7 +8,7 @@ canvas.height = 800;
 
 // Load the background image
 const background = new Image();
-background.src = 'kitchen.png'; // Replace with the correct path to your background image
+background.src = '../universal/kitchen.png'; // Replace with the correct path to your background image
 
 // Cat element and movement setup
 const cat = document.getElementById("cat");
@@ -44,16 +44,14 @@ const obstacles = [
 
 // Breakable objects and status tracking, including the door with isDoor property
 const objects = [
-  { element: document.getElementById("object2"), brokenSrc: '../universal/broken-bigp.png' },
+  { element: document.getElementById("object2"), brokenSrc: '../universal/broken-bigy.png' },
   { element: document.getElementById("object3"), brokenSrc: '../universal/broken-ipad.png' },
   { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png' },
   { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smolb.png' },
-  { element: document.getElementById("door"), isDoor: true, navigateTo: '../hallway/hallway.html' }, // Door with isDoor flag
+  { element: document.getElementById("door"), isDoor: true, navigateTo: '../hallway/hallway.html' },
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../hallway/hallway.html'}
 ];
-const objectStates = [false, false, false, false, false,]; // Tracks whether objects are broken
-
-
+const objectStates = [false, false, false, false, false,false]; // Tracks whether objects are broken
 
 // Start the animation
 background.onload = () => {

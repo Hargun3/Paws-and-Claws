@@ -71,22 +71,11 @@ body {
   position: absolute;
   width: 100px;
   height: 100px;
-  background-image: url('../universal/meow-resting.png'); /* Path to the cat image */
+  background-image: url('meow.png'); /* Path to the cat image */
   background-size: contain;
   background-repeat: no-repeat;
   top: 200px;
   left: 200px;
-}
-
-#grandma {
-  position: absolute;
-  width: 60px;
-  height: 100px;
-  background-image: url('../universal/meow-left.png'); /* Path to the cat image */
-  background-size: contain;
-  background-repeat: no-repeat;
-  top: 500px;
-  left: 500px;
 }
 
 /* Canvas styling */
@@ -188,4 +177,14 @@ body {
   left: 503px;
   height: auto;
   width: auto;
+}
+#grandma {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url('../universal/gram.png'); /* Path to the cat image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 500px;
+  left: 500px;
 }
