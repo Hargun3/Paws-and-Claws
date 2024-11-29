@@ -188,14 +188,14 @@ body {
   }
   
   #door {
-    top: 770px;
-    left: 236px;
+    top: 300px;
+    left: 0px;
     height: auto;
     width: auto;
   }
   #door2 {
-    top: 770px;
-    left: 909px;
+    top:770px;
+    left: 150px;
     height: auto; 
     width: auto;
   }

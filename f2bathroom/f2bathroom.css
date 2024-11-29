@@ -153,14 +153,14 @@ body {
   }
   
   #door {
-    top: 770px;
-    left: 236px;
+    top: 0px;
+    left: 550px;
     height: auto;
     width: auto;
   }
   #door2 {
-    top: 770px;
-    left: 909px;
+    top: 600px;
+    left: 1250px;
     height: auto; 
     width: auto;
   }

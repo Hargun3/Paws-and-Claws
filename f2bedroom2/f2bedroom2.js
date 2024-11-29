@@ -52,9 +52,9 @@ const objects = [
   { element: document.getElementById("object3"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
   { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png' , type: "break"},
   { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smolp.png', type: "break" },
-  { element: document.getElementById("door"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'},
   { element: document.getElementById("object10"), brokenSrc: '../universal/broken-smolb.png', type: "treat", visibility: treatVisibility },
-  { element: document.getElementById("door2"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'}
+  { element: document.getElementById("door"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'},
+  { element: document.getElementById("door2"), isDoor: true, navigateTo: '../library/library.html'}
 ];
 const objectStates = [false, false, false, false, false, false, false, false,false,false,false,false]; // Tracks whether objects are broken
 

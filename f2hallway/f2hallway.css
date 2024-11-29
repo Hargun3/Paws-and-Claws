@@ -94,14 +94,14 @@ img[id^="door"] {
 }
 
 /* Positions for doors */
-#door1 { top: 160px; left: 447px; width: 10px; height: 55px;}
-#door2 { top: 475px; left: 448px; width: 10px; height: 55px;}
-#door3 { top: 625px; left: 822px; width: 10px; height: 55px; }
-#door4 { top: 533px; left: 1100px; width: 55px; height: 10px; }
-#door5 { top: 366px; left: 870px; width: 55px; height: 10px; }
-#door6 { top: 230px; left: 822px; width: 10px; height: 55px; }
-#door7 { top: 60px; left: 720px; width: 55px; height: 10px;}
-#door8 { top: 60px; left: 520px; width: 55px; height: 10px;}
+#door1 { top: 145px; left: 447px; width: 10px; height: 55px;}
+#door2 { top: 620px; left: 448px; width: 10px; height: 55px;}
+#door3 { top: 470px; left: 830px; width: 10px; height: 55px; }
+#door4 { top: 463px; left: 110px; width: 55px; height: 10px; }
+#door5 { top: 295px; left: 105px; width: 55px; height: 10px; }
+#door6 { top: 230px; left: 830px; width: 10px; height: 55px; }
+#door7 { top: 60px; left: 740px; width: 55px; height: 10px;}
+#door8 { top: 60px; left: 480px; width: 55px; height: 10px;}
 
 #stairs {
   position: absolute;
