@@ -320,3 +320,4 @@ document.getElementById("pauseButton").addEventListener("click", togglePause);
 document.getElementById("resumeButton").addEventListener("click", togglePause);
 document.getElementById("restartButton").addEventListener("click", restartGame);
 document.getElementById("exitButton").addEventListener("click", exitGame);
+
