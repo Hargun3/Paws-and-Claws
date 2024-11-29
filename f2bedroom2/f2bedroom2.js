@@ -45,9 +45,9 @@ const obstacles = [
 
 // Breakable objects and status tracking, including the door with isDoor property
 const objects = [
-  { element: document.getElementById("object3"), brokenSrc: '../universal/broken-smolb.png' },
-  { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png' },
-  { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smolp.png' },
+  { element: document.getElementById("object3"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
+  { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png' , type: "break"},
+  { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smolp.png', type: "break" },
   { element: document.getElementById("door"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'},
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'}
 ];

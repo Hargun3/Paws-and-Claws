@@ -249,14 +249,26 @@ function animate() {
       object.element.classList.remove('smokey'); // Remove the smokey class to reset
     }, 1000); // Wait for the animation to complete
   
-    if (!localStorage.getItem('break')) {
-      localStorage.setItem('break', '1');
-      breakValue = 1;
-    }else{
-      breakValue = parseInt(localStorage.getItem('break'), 10);
-      breakValue = breakValue + 1;
-      localStorage.setItem('break', breakValue.toString());
+    if (object.type == "break"){
+      if (!localStorage.getItem('break')) {
+        localStorage.setItem('break', '1');
+        breakValue = 1;
+      }else{
+        breakValue = parseInt(localStorage.getItem('break'), 10);
+        breakValue = breakValue + 1;
+        localStorage.setItem('break', breakValue.toString());
+      }
+    }else if(object.type == "treat"){
+      if (!localStorage.getItem('treat')) {
+        localStorage.setItem('treat', '1');
+        breakValue = 1;
+      }else{
+        breakValue = parseInt(localStorage.getItem('treat'), 10);
+        breakValue = breakValue + 1;
+        localStorage.setItem('treat', breakValue.toString());
+      }
     }
+    
   
     const breakElement = document.getElementById('break');
     breakElement.textContent = breakValue;
