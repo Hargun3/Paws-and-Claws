@@ -9,6 +9,6 @@ function startGame() {
   canvas.style.display = 'block';
 
   // Redirect to the first level (e.g., kitchen.html)
-  window.location.href = '../hallway/hallway.html';
+  window.location.href = '../rules/rules.html';
 }
   

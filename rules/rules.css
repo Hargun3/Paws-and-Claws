@@ -1,27 +1,70 @@
-/* rules.css */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #f9f9f9;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  height: 100vh;
+}
+
+.page-container {
+  position: relative;
+  width: 1280px;
+  height: 800px;
+  background: url('../universal/rules.png') no-repeat center center;
+  background-size: cover;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signature-section {
+  position: absolute;
+  left: 750px; /* X-coordinate */
+  top: 550px;  /* Y-coordinate */
+  width: 187x;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button#sign-btn {
+  width: 187px; /* Matches the defined width of 187px */
+  height: 46px; /* Matches the defined height of 45px */
+  background-color: #ff77c7;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button#sign-btn:hover {
+  background-color: #ff5aad;
+}
+
+.animation-container {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.cat-path {
+  stroke-dasharray: 700; /* Adjust to the path length */
+  stroke-dashoffset: 700; /* Initially hide the stroke */
+  animation: none;
+}
+#pen {
+  position: absolute;
+  width: 100px; /* Adjust the size of the pen */
+  height: auto;
+  display: none; /* Initially hide the pen */
+  transform: translate(-50%, -50%); /* Center the pen's position */
+}
+
+
+@keyframes draw-cat {
+  to {
+    stroke-dashoffset: 0; /* Reveal the stroke */
   }
-  
-  .animation-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .cat-path {
-    stroke-dasharray: 700; /* Adjust to the path length */
-    stroke-dashoffset: 700; /* Initially hide the stroke */
-    animation: draw-cat 4s linear forwards;
-  }
-  
-  @keyframes draw-cat {
-    to {
-      stroke-dashoffset: 0; /* Reveal the stroke */
-    }
-  }
-  
+}
