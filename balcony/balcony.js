@@ -35,7 +35,7 @@ const movement = {
   right: false
 };
 
-obstacles_opacity = 0.3
+obstacles_opacity = 0.0
 const obstacles = [
   {x: 30, y: 200, width: 60, height: 130, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
   {x: 225, y: 30, width: 520, height: 60, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
