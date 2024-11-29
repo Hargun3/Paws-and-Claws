@@ -188,6 +188,12 @@ body {
   top: 500px;
   left: 500px;
 }
+#object10 {
+  top: 355px;
+  left: 910px;
+  height: auto;
+  width: auto;
+}
 
 .pause-btn {
   width: 50px; /* Adjust to fit your PNG size */

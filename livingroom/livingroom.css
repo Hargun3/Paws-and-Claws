@@ -176,6 +176,13 @@ body {
   height: auto;
   width: auto;
 }
+
+#object10 {
+  top: 355px;
+  left: 910px;
+  height: auto;
+  width: auto;
+}
 #grandma {
   position: absolute;
   width: 100px;
