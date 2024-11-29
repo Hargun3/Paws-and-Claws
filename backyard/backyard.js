@@ -35,7 +35,7 @@ const movement = {
   right: false
 };
 
-obstacles_opacity = 0.3
+obstacles_opacity = 0.0
 const obstacles = [
   {x: 99, y: 225, width: 175, height: 200, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
   {x: 1190, y: 355, width: 60, height: 210, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
@@ -43,13 +43,13 @@ const obstacles = [
 
 // Breakable objects and status tracking, including the door with isDoor property
 const objects = [
-  { element: document.getElementById("object1"), brokenSrc: '../universal/broken-bigp.png' },
-  { element: document.getElementById("object2"), brokenSrc: '../universal/broken-bigy.png' },
-  { element: document.getElementById("object3"), brokenSrc: '../universal/broken-smolb.png' },
-  { element: document.getElementById("object4"), brokenSrc: '../universal/broken-smolb.png' },
-  { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png' },
-  { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smoly.png' },
-  { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smolb.png' },
+  { element: document.getElementById("object1"), brokenSrc: '../universal/broken-bigp.png', type: "break" },
+  { element: document.getElementById("object2"), brokenSrc: '../universal/broken-bigy.png', type: "break" },
+  { element: document.getElementById("object3"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
+  { element: document.getElementById("object4"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
+  { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png', type: "break" },
+  { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smoly.png', type: "break" },
+  { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
   { element: document.getElementById("door"), isDoor: true, navigateTo: '../hallway/hallway.html'},
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../hallway/hallway.html'}
 ];

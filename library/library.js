@@ -35,7 +35,7 @@ const movement = {
   right: false
 };
 
-obstacles_opacity = 0.3
+obstacles_opacity = 0.0
 const obstacles = [
   {x: 337, y: 140, width: 90, height: 50, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
   {x: 370, y: 650, width: 415, height: 120, color: 'rgba(255, 0, 0, ' + obstacles_opacity + ')'},
@@ -44,15 +44,15 @@ const obstacles = [
 
 // Breakable objects and status tracking, including the door with isDoor property
 const objects = [
-  { element: document.getElementById("object1"), brokenSrc: '../universal/broken-bigp.png' },
-  { element: document.getElementById("object2"), brokenSrc: '../universal/broken-bigy.png' },
-  { element: document.getElementById("object3"), brokenSrc: '../universal/broken-smolb.png' },
-  { element: document.getElementById("object4"), brokenSrc: '../universal/broken-smolb.png' },
-  { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png' },
-  { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smoly.png' },
-  { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smoly.png' },
-  { element: document.getElementById("object10"), brokenSrc: '../universal/broken-smolp.png' },
-  { element: document.getElementById("object12"), brokenSrc: '../universal/broken-ipad.png' },
+  { element: document.getElementById("object1"), brokenSrc: '../universal/broken-bigp.png', type: "break" },
+  { element: document.getElementById("object2"), brokenSrc: '../universal/broken-bigy.png', type: "break" },
+  { element: document.getElementById("object3"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
+  { element: document.getElementById("object4"), brokenSrc: '../universal/broken-smolb.png', type: "break" },
+  { element: document.getElementById("object5"), brokenSrc: '../universal/broken-smoly.png', type: "break" },
+  { element: document.getElementById("object6"), brokenSrc: '../universal/broken-smoly.png', type: "break"},
+  { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smoly.png', type: "break" },
+  { element: document.getElementById("object10"), brokenSrc: '../universal/broken-smolp.png' , type: "break"},
+  { element: document.getElementById("object12"), brokenSrc: '../universal/broken-ipad.png', type: "break" },
   { element: document.getElementById("door"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'},
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'}
 ];
