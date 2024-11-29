@@ -102,7 +102,7 @@ function updateGrandmaPosition(grandma_pos_X_offset, grandma_pos_X_offset){
 
     // Collision detection between red circle and green circle
     if (distance < catR + grandmaR) {
-        window.location.href = '../statistics/statistics.html'; // Redirect to another page
+        window.location.href = '../gameover/gameover.html'; // Redirect to another page
     }
 
     if (distance > 0) {
@@ -300,7 +300,7 @@ function restartGame() {
 
 // Exit the game
 function exitGame() {
-  window.location.href = '../StartScreen/start.html'; // Redirect to the start screen or exit
+  window.location.href = '../index/index.html'; // Redirect to the start screen or exit
 }
 
 // Attach event listeners

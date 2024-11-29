@@ -1,0 +1,83 @@
+/* General styling */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4e1c1; /* Light background color */
+    overflow: hidden;
+    flex-direction: column;
+  }
+  
+  /* Progress bar container */
+  .progress-container {
+    width: 400px;
+    height: 20px;
+    background-color: #f4e1c1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: -400px; /* Space between the bar and gifs */
+  }
+  
+  /* Progress bar filling animation */
+  .progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #DD50A5;
+    border-radius: 10px;
+    animation: fillProgress 5s forwards; /* 5-second animation */
+  }
+  
+  /* Keyframes for filling the bar */
+  @keyframes fillProgress {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%; /* Fills the bar completely */
+    }
+  }
+  
+  /* Container for the gifs */
+  .gif-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    top: 20px; /* Adjust the position of the gif container */
+  }
+  
+  /* Styling for the gifs */
+  .gif {
+    width: 450px; /* Set size for gifs */
+    height: auto;
+    opacity: 0; /* Start with gifs hidden */
+    animation: fadeIn 1s ease-in forwards;
+    position: absolute; /* Allows for precise positioning */
+  }
+  
+  /* Positioning for GIF1 */
+  #gif1 {
+    top: -200px;   /* Position 50px from the top */
+    left: -200px; /* Position 100px from the left */
+  }
+  
+  /* Positioning for GIF2 */
+  #gif2 {
+    top: 100px;    /* Position 50px from the top */
+    right: -200px; /* Position 100px from the right */
+  }
+  
+  /* Animation for fading in the gifs */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

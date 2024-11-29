@@ -34,7 +34,7 @@ document.getElementById('sign-btn').addEventListener('click', () => {
     } else {
       pen.style.display = 'none'; // Hide the pen when done
       // Redirect to the next page
-      window.location.href = '../hallway/hallway.html';
+      window.location.href = '../loading/loading.html';
     }
   }
 
