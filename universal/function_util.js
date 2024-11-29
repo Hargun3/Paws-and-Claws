@@ -16,7 +16,7 @@ function updateGrandmaSpeed(){
   
         // Calculate time elapsed and adjust countdown
         const elapsed = Math.floor((now - lastUpdated) / 10000);
-        let newCountdown = Math.min(10, countdown + elapsed);
+        let newCountdown = Math.min(0, countdown + elapsed);
   
         if (newCountdown !== countdown) {
             if(newCountdown !== NaN){
@@ -133,10 +133,19 @@ function drawScene(walls, pos_X_offset, pos_Y_offset) {
 }
 
   // Check for collisions with doors only
-function detectCollision() {
+  function detectCollision() {
+    if (!localStorage.getItem('break')) {
+      localStorage.setItem('break', '0');
+      breakValue = 1;
+    }else{
+      breakValue = localStorage.getItem('break');
+    }
+    const breakElement = document.getElementById('break');
+    breakElement.textContent = breakValue;
+  
     const catRect = cat.getBoundingClientRect();
   
-    objects.forEach((object) => {
+    objects.forEach((object, index) => {
       const objectRect = object.element.getBoundingClientRect();
   
       if (
@@ -146,11 +155,16 @@ function detectCollision() {
         catRect.bottom > objectRect.top
       ) {
         if (object.isDoor) {
+          // Navigate to bathroom.html if the door is hit
           window.location.href = object.navigateTo;
+          
+        }  
+        else if (!objectStates[index]) {
+          handleCollision(object, index);
         }
       }
     });
-}
+  }
 
   // Ensure the cat stays within canvas boundaries
 function keepCatInBounds() {
@@ -221,30 +235,6 @@ function animate() {
   
 
 // Check for collisions with objects
-function detectCollision() {
-    const catRect = cat.getBoundingClientRect();
-  
-    objects.forEach((object, index) => {
-      const objectRect = object.element.getBoundingClientRect();
-  
-      if (
-        catRect.left < objectRect.right &&
-        catRect.right > objectRect.left &&
-        catRect.top < objectRect.bottom &&
-        catRect.bottom > objectRect.top
-      ) {
-        if (object.isDoor) {
-          // Navigate to bathroom.html if the door is hit
-          window.location.href = object.navigateTo;
-          
-        }  
-        else if (!objectStates[index]) {
-          handleCollision(object, index);
-        }
-      }
-    });
-  }
-  
   // Handle collision events
   function handleCollision(object, index) {
     objectStates[index] = true; // Mark the object as broken
@@ -259,9 +249,23 @@ function detectCollision() {
       object.element.classList.remove('smokey'); // Remove the smokey class to reset
     }, 1000); // Wait for the animation to complete
   
+    if (!localStorage.getItem('break')) {
+      localStorage.setItem('break', '1');
+      breakValue = 1;
+    }else{
+      breakValue = parseInt(localStorage.getItem('break'), 10);
+      breakValue = breakValue + 1;
+      localStorage.setItem('break', breakValue.toString());
+    }
+  
+    const breakElement = document.getElementById('break');
+    breakElement.textContent = breakValue;
+  
+  
+  
+  
     console.log(`Collision detected with object ${index + 1}`);
   }
-
 // Pause and Resume Functions
 let isPaused = false; // Tracks if the game is paused
 const pauseOverlay = document.getElementById("pauseOverlay");
