@@ -1,0 +1,70 @@
+/* General page styling */
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #7c6c61;
+  }
+  
+  /* Container styling */
+  #game-container {
+    position: relative;
+    width: 1280px;
+    height: 800px;
+    background: url('../universal/gameover.png') no-repeat center center;
+    background-size: cover;
+  }
+  
+  /* Start screen styling */
+  #game-over {
+    position: absolute;
+    top: 650px;
+    left: 640px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .game-title {
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 6px black;
+    margin-bottom: 20px;
+  }
+  
+  .Finish {
+    
+    width: 187px;
+  height: 46px; 
+  background-color: #ff77c7;
+  border: none;
+  font-family: 'Monstress', 'Arial', sans-serif; /* Use a similar font */
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  }
+  
+  .Finish:hover {
+    background-color: #2C5A90;
+    transform: scale(1.1);
+  }
+  
+  .Finish:active {
+    background-color: #163051;
+    transform: scale(1);
+  }
+  
+  /* Canvas styling */
+  #gameCanvas {
+    display: none; /* Initially hidden until the game starts */
+    width: 1280px;
+    height: 800px;
+    background-color: #7c6c61;
+    border-radius: 10px;
+  }
+  
