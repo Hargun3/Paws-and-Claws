@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard Page 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Position content at the bottom */
+            align-items: center;
+            min-height: 100vh;
+             /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+        .scoreboard-container {
+            width: 100%; /* Match the width of the background */
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            
+        }
+        .scoreboard {
+            width: 455px; /* Full width of container */
+            height: 62px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            text-align: center;
+            border-radius: 10px;
+            background-image: url('universal/scoreboard.png');
+        }
+        .score {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px;
+            margin: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            color: black;
+        }
+        a {
+            color: lightblue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="scoreboard-container">
+        <div class="scoreboard">
+            <h1>Scoreboard</h1>
+            <div class="score">Score: <span id="score">0</span></div>
+            <button onclick="updateScore(1)">Increase</button>
+            <button onclick="updateScore(-1)">Decrease</button>
+            <button onclick="resetScore()">Reset</button>
+            <br>
+            <a href="page2.html">Go to Page 2</a>
+        </div>
+    </div>
+
+    <script>
+        const scoreDisplay = document.getElementById('score');
+
+        // Initialize score from localStorage
+        function initializeScore() {
+            const score = localStorage.getItem('score') || 0;
+            scoreDisplay.textContent = score;
+        }
+
+        // Update the score
+        function updateScore(value) {
+            let score = parseInt(localStorage.getItem('score') || 0);
+            score += value;
+            localStorage.setItem('score', score);
+            scoreDisplay.textContent = score;
+        }
+
+        // Reset the score
+        function resetScore() {
+            localStorage.setItem('score', 0);
+            scoreDisplay.textContent = 0;
+        }
+
+        // Initialize on load
+        initializeScore();
+    </script>
+</body>
+</html>
