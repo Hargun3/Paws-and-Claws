@@ -1,0 +1,27 @@
+/* rules.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f9f9f9;
+  }
+  
+  .animation-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cat-path {
+    stroke-dasharray: 700; /* Adjust to the path length */
+    stroke-dashoffset: 700; /* Initially hide the stroke */
+    animation: draw-cat 4s linear forwards;
+  }
+  
+  @keyframes draw-cat {
+    to {
+      stroke-dashoffset: 0; /* Reveal the stroke */
+    }
+  }
+  
