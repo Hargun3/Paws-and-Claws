@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Countdown Page 1</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #282c34;
-      color: white;
-      font-family: Arial, sans-serif;
-      font-size: 100px;
-      font-weight: bold;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard Page 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-image: url('background.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+        .score {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px;
+            margin: 5px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            color: black;
+        }
+        a {
+            color: lightblue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div id="countdown">10</div>
-  <script>
-    // Initialize countdown value if not already in localStorage
-    if (!localStorage.getItem('countdown')) {
-      localStorage.setItem('countdown', '10');
-      localStorage.setItem('lastUpdated', Date.now().toString());
-    }
+    <h1>Scoreboard</h1>
+    <div class="score">Score: <span id="score">0</span></div>
+    <button onclick="updateScore(1)">Increase</button>
+    <button onclick="updateScore(-1)">Decrease</button>
+    <button onclick="resetScore()">Reset</button>
+    <br>
+    <a href="page1.html">Go to Page 1</a>
 
-    const countdownElement = document.getElementById('countdown');
-    let timer;
+    <script>
+        const scoreDisplay = document.getElementById('score');
 
-    function updateCountdown() {
-      const now = Date.now();
-      const lastUpdated = parseInt(localStorage.getItem('lastUpdated'), 10);
-      const countdown = parseInt(localStorage.getItem('countdown'), 10);
+        // Initialize score from localStorage
+        function initializeScore() {
+            const score = localStorage.getItem('score') || 0;
+            scoreDisplay.textContent = score;
+        }
 
-      // Calculate time elapsed and adjust countdown
-      const elapsed = Math.floor((now - lastUpdated) / 1000);
-      const newCountdown = Math.max(0, countdown - elapsed);
+        // Update the score
+        function updateScore(value) {
+            let score = parseInt(localStorage.getItem('score') || 0);
+            score += value;
+            localStorage.setItem('score', score);
+            scoreDisplay.textContent = score;
+        }
 
-      if (newCountdown !== countdown) {
-        localStorage.setItem('countdown', newCountdown.toString());
-        localStorage.setItem('lastUpdated', now.toString());
-      }
+        // Reset the score
+        function resetScore() {
+            localStorage.setItem('score', 0);
+            scoreDisplay.textContent = 0;
+        }
 
-      countdownElement.textContent = newCountdown;
-
-      if (newCountdown <= 0) {
-        clearInterval(timer);
-      }
-    }
-
-    // Update the countdown every second
-    timer = setInterval(updateCountdown, 1000);
-
-    // Perform initial update
-    updateCountdown();
-  </script>
+        // Initialize on load
+        initializeScore();
+    </script>
 </body>
 </html>
