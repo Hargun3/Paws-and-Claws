@@ -11,6 +11,15 @@
     <canvas id="gameCanvas"></canvas>
     <div id="cat"></div>
     <div id="grandma"></div>
+    <button id="pauseButton" class="pause-btn"></button>
+    <div id="pauseOverlay" class="pause-overlay">
+      <div class="pause-menu">
+        <h1>Game Paused</h1>
+        <button id="resumeButton" class="menu-btn">Resume</button>
+        <button id="restartButton" class="menu-btn">Restart</button>
+        <button id="exitButton" class="menu-btn">Quit</button>
+      </div>
+    </div>
     <img src="../universal/bigp.png" alt="Object 1" class="breakableObject" id="object1">
     <img src="../universal/bigy.png" alt="Object 2" class="breakableObject" id="object2">
     <img src="../universal/ipad.png" alt="Object 3" class="breakableObject" id="object3">
@@ -23,10 +32,8 @@
 
   
   </div>
-  <script src="../universal/function_util.js"></script>
   <script src="garage.js"></script>
 
-  
   <div class="scoreboard-container">
     <div class="scoreboard">
       <div class="break" id="break">0</div>
