@@ -1,0 +1,122 @@
+/* General page styling */
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #7c6c61;
+  }
+  
+  /* Container styling */
+  #game-container {
+    position: relative;
+    width: 1280px;
+    height: 800px;
+    background: url('../universal/Statistics\ Screen.png') no-repeat center center;
+    background-size: cover;
+  }
+  
+  /* Start screen styling */
+  #button-container {
+    position: absolute;
+    top: 800px;
+    left: 640px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    width: 688px;
+    height: 282.5px;
+  }
+  
+  .game-title {
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 6px black;
+    margin-bottom: 20px;
+  }
+  
+  .start-button {
+    display: inline-block;
+    background-color: #1D3E66;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 35px;
+  }
+  
+  .start-button:hover {
+    background-color: #2C5A90;
+    transform: scale(1.1);
+  }
+  
+  .start-button:active {
+    background-color: #163051;
+    transform: scale(1);
+  }
+
+  .statement-button {
+    display: inline-block;
+    background-color: #1D3E66;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 35px;
+  }
+  
+  .statement-button:hover {
+    background-color: #2C5A90;
+    transform: scale(1.1);
+  }
+  
+  .statement-button:active {
+    background-color: #163051;
+    transform: scale(1);
+  }
+  
+#stats-container{
+    position: absolute;
+    top: 325px;
+    left: 910px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    width: 688px;
+    height: 182.5px;
+    display: flex;
+}
+
+.break-value{
+    font-size: 5em;
+    margin: 50px 135px;
+  }
+  
+.treat-value{
+    font-size: 5em;
+    margin: 50px 115px;
+}
+
+
+  /* Canvas styling */
+  #gameCanvas {
+    display: none; /* Initially hidden until the game starts */
+    width: 1280px;
+    height: 800px;
+    background-color: #7c6c61;
+    border-radius: 10px;
+  }
+  
