@@ -57,7 +57,7 @@ const objects = [
   { element: document.getElementById("object7"), brokenSrc: '../universal/broken-smoly.png', type: "break" },
   { element: document.getElementById("object10"), brokenSrc: '../universal/broken-smolp.png' , type: "break"},
   { element: document.getElementById("object12"), brokenSrc: '../universal/broken-ipad.png', type: "break" },
-  { element: document.getElementById("object13"), brokenSrc: '../universal/broken-smolb.png', type: "treat", visibility: treatVisibility },
+  { element: document.getElementById("object13"), brokenSrc: '../universal/fish.png', type: "treat", visibility: treatVisibility },
   { element: document.getElementById("door"), isDoor: true, navigateTo: '../f2hallway/f2hallway.html'},
   { element: document.getElementById("door2"), isDoor: true, navigateTo: '../f2bedroom2/f2bedroom2.html'}
 ];

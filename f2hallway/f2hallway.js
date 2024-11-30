@@ -38,13 +38,13 @@ const movement = {
 
 walls_opacity = 0
 const obstacles = [
-  {x: 448, y: 60, width: 10, height: 712, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
-  {x: 448, y: 60, width:384, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
-  {x: 822, y: 60, width:10, height: 317, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
-  {x: 822, y: 367, width:367, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
-  {x: 1189, y: 367, width:10, height: 170, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
-  {x: 822, y: 533, width:373, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
-  {x: 822, y: 533, width:10, height: 230, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 822, y: 60, width: 10, height: 712, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 448, y: 60, width:384, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'}, /*good/*/
+  {x: 448, y: 60, width:10, height: 317, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 90, y: 290, width:367, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 80, y: 307, width:10, height: 170, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 80, y: 450, width:373, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
+  {x: 440, y: 460, width:10, height: 230, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'},
   {x: 448, y: 760, width:384, height: 10, color: 'rgba(255, 0, 0, ' + walls_opacity + ')'}
 ]
 
