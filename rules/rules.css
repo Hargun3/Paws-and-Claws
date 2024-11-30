@@ -20,8 +20,8 @@ body {
 
 .signature-section {
   position: absolute;
-  left: 750px; /* X-coordinate */
-  top: 550px;  /* Y-coordinate */
+  left: 730px; /* X-coordinate */
+  top: 510px;  /* Y-coordinate */
   width: 187x;
   height: 100px;
   display: flex;
